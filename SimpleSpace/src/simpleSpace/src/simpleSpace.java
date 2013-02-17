@@ -20,6 +20,13 @@ public class simpleSpace {
         HP = 3000;
         gameJumpCTR = 1;
         gameJumpMAX = 15;
+        System.out.println("In a Galaxy far far far away in the distant future,\n"
+                + "you are the Captain of an alliance battleship, trapped deep\n"
+                + "within enemy territory with Intelligence information that could\n"
+                + "finally put an end to this war. In order to make it back to Alliance\n"
+                + "space, you must successfully make 15 FTL jumps. That is 15 times\n"
+                + "that the enemy has the oppurtunity to stop you, and turn the tide\n"
+                + "of the war in their favor...");
     }
     /*
      * show help function. just uses system.out.println but is used multiple times.
@@ -149,13 +156,7 @@ public class simpleSpace {
     public static void main(String[] args) throws InterruptedException, Exception {
         simpleSpace game = new simpleSpace();
         game.processor(args);
-        System.out.println("In a Galaxy far far far away in the distant future,\n"
-                + "you are the Captain of an alliance battleship, trapped deep\n"
-                + "within enemy territory with Intelligence information that could\n"
-                + "finally put an end to this war. In order to make it back to Alliance\n"
-                + "space, you must successfully make 15 FTL jumps. That is 15 times\n"
-                + "that the enemy has the oppurtunity to stop you, and turn the tide\n"
-                + "of the war in their favor...");
+
         game.mnMenu();
     }
 
