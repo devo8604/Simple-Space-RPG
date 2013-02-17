@@ -89,75 +89,82 @@ public class simpleSpace {
     }
     
     public void startGameEvent(Scanner in, event ev, item item) throws InterruptedException {
-        if (HP > 0) {
-                System.out.println("|----------------|");
-                System.out.println("|  Select one:   |");
-                System.out.println("|  1. Jump.      |");
-                System.out.println("|  2. Inventory  |");
-                System.out.println("|  3. Quit.      |");
-                System.out.println("|----------------|");
+        while (HP > 0) {
+            if (HP > 0) {
+                    System.out.println("|----------------|");
+                    System.out.println("|  Select one:   |");
+                    System.out.println("|  1. Jump.      |");
+                    System.out.println("|  2. Inventory  |");
+                    System.out.println("|  3. Quit.      |");
+                    System.out.println("|----------------|");
 
-                int menuItem = in.nextInt();
+                    int menuItem = in.nextInt();
 
-                switch (menuItem) {
-                    case 1:
-                        double battleChoice = ev.ranNum();
+                    switch (menuItem) {
+                        case 1:
+                            double battleChoice = ev.ranNum();
 
-                        if (battleChoice > 80) {
-                            eneFrigate fr = new eneFrigate();
+                            if (battleChoice > 80) {
+                                eneFrigate fr = new eneFrigate();
 
-                            fr.battleStart();
-                            Thread.sleep(250);
-                            fr.battle();
-                            mnMenu();
-                        } else if (battleChoice > 40) {
-                            eneBattleship bs = new eneBattleship();
+                                fr.battleStart();
+                                Thread.sleep(250);
+                                fr.battle();
+                                mnMenu();
+                            } else if (battleChoice > 40) {
+                                eneBattleship bs = new eneBattleship();
 
-                            bs.battleStart();
-                            Thread.sleep(250);
-                            bs.battle();
-                            mnMenu();
-                        } else {
-                            eneCruiser cr = new eneCruiser();
+                                bs.battleStart();
+                                Thread.sleep(250);
+                                bs.battle();
+                                mnMenu();
+                            } else {
+                                eneCruiser cr = new eneCruiser();
 
-                            cr.battleStart();
-                            Thread.sleep(250);
-                            cr.battle();
-                            mnMenu();
-                        }
-                    case 2:
-                        item.inventory();
+                                cr.battleStart();
+                                Thread.sleep(250);
+                                cr.battle();
+                                mnMenu();
+                            }
+                        case 2:
+                            item.inventory();
 
-                        break;
+                            break;
 
-                    case 3:
-                        System.exit(0);
+                        case 3:
+                            System.exit(0);
 
-                        break;
-                }
+                            break;
+                    }
+            }
+            else {
+                startGameFailEvent();
+            }
         }
-        else {
-            System.out.println("You have failed. GAME OVER");
-            System.exit(0);            
-        }
+    }
+    
+    public void startGameSuccessEvent() {
+        System.out.println("Congratulations Captain, you have successfully brought\n"
+                + "your crew home safely, for the most part, and delivered your precious\n"
+                + "cargo to the alliance fleet headquarters. The war will soon be over because\n"
+                + "of you.");
+        System.exit(0);        
+    }
+    
+    public void startGameFailEvent() {
+                System.out.println("You have failed. GAME OVER");
+                System.exit(0);         
     }
     
     public void mnMenu() throws InterruptedException {
         Scanner in = new Scanner(System.in);
         event ev = new event();
         item item = new item();
-
         for (; gameJumpCTR < gameJumpMAX; gameJumpCTR++) {
-            while (HP > 0) {
                 startGameEvent(in, ev, item);
-            }
         }
-
-        System.out.println("Congratulations Captain, you have successfully brought\n"
-                + "your crew home safely, for the most part, and delivered your precious\n"
-                + "cargo to the alliance fleet headquarters. The war will soon be over because\n"
-                + "of you.");
-        System.exit(0);
+        if (HP > 0) { startGameSuccessEvent();}
+        else { startGameFailEvent(); }
     }
     
     public static void main(String[] args) throws InterruptedException, Exception {
