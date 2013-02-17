@@ -14,7 +14,7 @@ public class item {
     public static double rm = 1000; //Raw Material
     public static double m = 60;     //Missiles
     public static double r = 100;     //Railgun
-
+/*
     public void inventory() throws InterruptedException {
 
         System.out.println("|-----------------------------------|");
@@ -61,11 +61,10 @@ public class item {
                 railgun();
                 break;
             case 4:
-                simpleSpace.mnMenu();
                 break;
         }
     }
-
+    
     public void repair() throws InterruptedException {
         System.out.println("You can repair your ship up to "
                 + (simpleSpace.HP + rm));
@@ -81,7 +80,7 @@ public class item {
         }
 
     }
-
+*/
     public void missile() throws InterruptedException {
         double mi = rm / 4;
 

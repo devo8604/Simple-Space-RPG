@@ -12,13 +12,13 @@ public class simpleSpace {
     /*
      * Class variable declarations
      */
-    public double HP; // default = 3000
     public int gameJumpCTR; // default = 1
     public int gameJumpMAX; //default = 15
     public ArrayList<entNPC> encounters;
+    public entPlayer player;
 
     simpleSpace() {
-        HP = 3000;
+        player = new entPlayer();
         gameJumpCTR = 1;
         gameJumpMAX = 15;
         System.out.println("In a Galaxy far far far away in the distant future,\n"
@@ -94,8 +94,8 @@ public class simpleSpace {
     }
     
     public void startGameEvent(Scanner in, event ev, item item) throws InterruptedException {
-        while (HP > 0) {
-            if (HP > 0) {
+        while (player.isAlive) {
+            if (player.isAlive) {
                     System.out.println("|----------------|");
                     System.out.println("|  Select one:   |");
                     System.out.println("|  1. Jump.      |");
@@ -107,6 +107,14 @@ public class simpleSpace {
 
                     switch (menuItem) {
                         case 1:
+                            gameJumpCTR++;
+                            System.out.println(encounters.get(gameJumpCTR).initSpam);
+                            while (encounters.get(gameJumpCTR).isAlive) {
+                                Thread.sleep(250);
+                                player.takeDamage(encounters.get(gameJumpCTR).fire());
+                                encounters.get(gameJumpCTR).takeDamage(player.fire());
+                            }
+                            /*
                             double battleChoice = ev.ranNum();
 
                             if (battleChoice > 80) {
@@ -131,8 +139,9 @@ public class simpleSpace {
                                 cr.battle();
                                 mnMenu();
                             }
+                            */
                         case 2:
-                            item.inventory();
+                            //item.inventory();
 
                             break;
 
@@ -168,7 +177,7 @@ public class simpleSpace {
         for (; gameJumpCTR < gameJumpMAX; gameJumpCTR++) {
                 startGameEvent(in, ev, item);
         }
-        if (HP > 0) { startGameSuccessEvent();}
+        if (player.isAlive) { startGameSuccessEvent();}
         else { startGameFailEvent(); }
     }
     

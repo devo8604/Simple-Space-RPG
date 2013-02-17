@@ -92,7 +92,7 @@ public class event {
             return 0;
         }
     }
-
+/*
     public void eneBattle(double eHP) throws InterruptedException {
 
 
@@ -141,7 +141,7 @@ public class event {
                                 + "HP remaining: " + eHP);
                     }
                     break;
-                /*SUPERNOVA!!!*/ case 0:
+                //SUPERNOVA!!! case 0:
                     eHP -= 9999999;
                     System.out.println("I think we can call that a victory cause you just blew up the solar system.");
                     simpleSpace.mnMenu();
@@ -151,6 +151,7 @@ public class event {
 
 
     }
+*/
     /*
      public void save() throws IOException {
      double pHP = simpleSpace.HP; 

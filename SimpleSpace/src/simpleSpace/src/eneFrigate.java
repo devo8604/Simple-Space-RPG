@@ -15,10 +15,11 @@ public class eneFrigate extends ship {
 
         System.out.println("Enemy Frigate detected!" + "\n" + "Enemy HP at: " + eHP);
     }
-
+/*
     public void battle() throws InterruptedException {
         event.eneBattle(eHP);
         item.rm += 1500;
         System.out.println("You have recover some Raw Material.");
     }
+*/
 }

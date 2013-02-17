@@ -36,10 +36,13 @@ public class entPlayer extends entity {
     }
     
     public double fire() {
-        return 1.;
+        double result = 500.;
+        System.out.println(name + "fired for " + result + " damage!");
+        return result;
     }
     
     public void takeDamage(double damage) {
+        System.out.println(name + " took " + damage + "damage!");
         HP -= damage;
         if (HP <= 0) isAlive = false;
         else isAlive = true;

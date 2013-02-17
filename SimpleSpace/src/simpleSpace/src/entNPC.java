@@ -41,10 +41,13 @@ public class entNPC extends entity {
     }
     
     public double fire() {
-        return ((damageMax-damageMin) * gen.nextDouble()) + damageMin;
+        double result = ((damageMax-damageMin) * gen.nextDouble()) + damageMin;
+        System.out.println(name + "fired for " + result + " damage!");
+        return result;
     }
     
     public void takeDamage(double damage) {
+        System.out.println(name + " took " + damage + "damage!");
         HP -= damage;
         if (HP <= 0) isAlive = false;
         else isAlive = true;
