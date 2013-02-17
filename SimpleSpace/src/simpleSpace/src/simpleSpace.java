@@ -15,9 +15,12 @@ public class simpleSpace {
     public int gameJumpCTR; // default = 1
     public int gameJumpMAX; //default = 15
     public ArrayList<entNPC> encounters;
+    public ArrayList<item> possibleItems;
     public entPlayer player;
+    public Random gen;
 
     simpleSpace() {
+        gen = new Random();
         player = new entPlayer();
         gameJumpCTR = 0;
         gameJumpMAX = 15;
@@ -32,6 +35,10 @@ public class simpleSpace {
         for (int i=0; i<gameJumpMAX; i++) {
             encounters.add(new entNPC());
         }
+        possibleItems = new ArrayList();
+        possibleItems.add(new item(0, 1, "Missile", "This is a self-propelled seeking projectile. It has a high damage value."));
+        possibleItems.add(new item(1, 1, "Rail Slug", "This is a rail-propelled unguided projectile. It has a med-high damage value."));
+        possibleItems.add(new item(2, 1, "Repair Kit", "This is a self-deploying repair kit. Each unit repairs 1HP of damage."));
     }
     /*
      * show help function. just uses system.out.println but is used multiple times.

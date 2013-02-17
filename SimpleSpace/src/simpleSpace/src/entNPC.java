@@ -17,7 +17,6 @@ public class entNPC extends entity {
      * class variables
      */
     String initSpam;
-    ArrayList<item> loot;
     
     entNPC() {
         isAlive = true;
@@ -25,16 +24,16 @@ public class entNPC extends entity {
         name = "Porphyrian Battle Cruiser";
         dmgModifier = 150;
         gen = new Random();
-        loot = new ArrayList();
+        lootvalue = 200;
     }
     
-    entNPC(boolean alive, double hitpoints, String entName, double dmgM ) {
+    entNPC(boolean alive, double hitpoints, String entName, double dmgM, int lootv ) {
         isAlive = alive;
         HP = hitpoints;
         name = entName;
         gen = new Random();
         dmgModifier = dmgM;
-        loot = new ArrayList();
+        lootvalue = lootv;
     } 
 
 }

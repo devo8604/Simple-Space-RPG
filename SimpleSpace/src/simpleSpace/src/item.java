@@ -9,8 +9,7 @@ import java.util.Scanner;
  */
 public class item {
 
-    int itemID;
-    double qty;
+    int itemID, qty;
     String title, desc;
     
     item() {
@@ -20,7 +19,7 @@ public class item {
         desc = "This isn't a real item. look at something else!";
     }
     
-    item(int id, double quantity, String name, String description) {
+    item(int id, int quantity, String name, String description) {
         itemID = id;
         qty = quantity;
         title = name;

@@ -15,8 +15,9 @@ public class entity {
     /*
      * class primary variables
      */
-    public boolean isAlive;
+    public boolean isAlive, looted;
     public double HP, dmgModifier;
+    public int lootvalue;
     public String name;
     public Random gen;
     
@@ -47,8 +48,20 @@ public class entity {
         if (HP <= 0) isAlive = false;
         else isAlive = true;
     }
+    
     public void battle(entity target) {
         takeDamage(target.dealDamage());
         target.takeDamage(dealDamage());
+    }
+    
+    public item loot( ArrayList<item> possibilities) {
+        if(!looted) {
+            item chosenLoot = possibilities.get(gen.nextInt(possibilities.size() - 1));
+            chosenLoot.qty *= lootvalue;
+            System.out.println("Looting " + name + " yielded " + chosenLoot.qty + " ");
+            looted = true;
+            return chosenLoot;
+        }
+        else return new item(0,0,"","");
     }
 }
