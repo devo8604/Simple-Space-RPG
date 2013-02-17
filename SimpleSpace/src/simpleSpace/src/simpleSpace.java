@@ -19,16 +19,16 @@ public class simpleSpace {
 
     simpleSpace() {
         player = new entPlayer();
-        gameJumpCTR = 1;
+        gameJumpCTR = 0;
         gameJumpMAX = 15;
         System.out.println("In a Galaxy far far far away in the distant future,\n"
                 + "you are the Captain of an alliance battleship, trapped deep\n"
                 + "within enemy territory with Intelligence information that could\n"
                 + "finally put an end to this war. In order to make it back to Alliance\n"
-                + "space, you must successfully make 15 FTL jumps. That is 15 times\n"
+                + "space, you must successfully make " + gameJumpMAX + " FTL jumps. That is " + gameJumpMAX + " times\n"
                 + "that the enemy has the oppurtunity to stop you, and turn the tide\n"
                 + "of the war in their favor...");
-        encounters.clear();
+        encounters = new ArrayList<entNPC>();
         for (int i=0; i<gameJumpMAX; i++) {
             encounters.add(new entNPC());
         }
@@ -114,6 +114,8 @@ public class simpleSpace {
                                 player.takeDamage(encounters.get(gameJumpCTR).fire());
                                 encounters.get(gameJumpCTR).takeDamage(player.fire());
                             }
+                            if (!encounters.get(gameJumpCTR).isAlive) System.out.println("Success!");
+                            else startGameFailEvent();
                             /*
                             double battleChoice = ev.ranNum();
 

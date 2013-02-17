@@ -24,7 +24,6 @@ public class entPlayer extends entity {
         HP = 2000.;
         HPMax = 2000.;
         name = "Player1";
-        inventory.clear();
     }
     
     entPlayer(boolean alive, double hitpoints, String entName) {
@@ -32,18 +31,18 @@ public class entPlayer extends entity {
         HP = hitpoints;
         HPMax = hitpoints;
         name = entName;
-        inventory.clear();
     }
     
     public double fire() {
         double result = 500.;
-        System.out.println(name + "fired for " + result + " damage!");
+        System.out.println(name + " fired for " + result + " damage!");
         return result;
     }
     
     public void takeDamage(double damage) {
         System.out.println(name + " took " + damage + "damage!");
         HP -= damage;
+        System.out.println(name + "'s health: " + HP);
         if (HP <= 0) isAlive = false;
         else isAlive = true;
     }
