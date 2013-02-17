@@ -34,6 +34,11 @@ public class item {
         repairValue = repair;
         dmgValue = damage;
     }
+    
+    public boolean isEmpty() {
+        if (qty <= 0) return true;
+        else return false;
+    }
     /*
     Scanner in = new Scanner(System.in);
     simpleSpace s = new simpleSpace();
