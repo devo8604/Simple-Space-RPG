@@ -7,7 +7,7 @@ package SimpleSpace.src;
  * and open the template in the editor.
  */
 /**
- *
+ * @version 0.01
  * @author Devon Smith
  */
 import java.util.*;
