@@ -1,4 +1,4 @@
-package SimpleSpace.src;
+package simpleSpace.src;
 
 //~--- JDK imports ------------------------------------------------------------
 
