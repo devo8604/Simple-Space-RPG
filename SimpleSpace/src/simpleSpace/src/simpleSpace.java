@@ -15,6 +15,7 @@ public class simpleSpace {
     public double HP; // default = 3000
     public int gameJumpCTR; // default = 1
     public int gameJumpMAX; //default = 15
+    public ArrayList<entNPC> encounters;
 
     simpleSpace() {
         HP = 3000;
@@ -27,6 +28,10 @@ public class simpleSpace {
                 + "space, you must successfully make 15 FTL jumps. That is 15 times\n"
                 + "that the enemy has the oppurtunity to stop you, and turn the tide\n"
                 + "of the war in their favor...");
+        encounters.clear();
+        for (int i=0; i<gameJumpMAX; i++) {
+            encounters.add(new entNPC());
+        }
     }
     /*
      * show help function. just uses system.out.println but is used multiple times.
