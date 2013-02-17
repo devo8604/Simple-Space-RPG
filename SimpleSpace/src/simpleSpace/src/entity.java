@@ -15,9 +15,9 @@ public class entity {
     /*
      * class primary variables
      */
-    public boolean isAlive, looted;
+    public boolean isAlive;
     public double HP, dmgModifier;
-    public int lootvalue;
+    public int lootvalue, lootrolls;
     public String name;
     public Random gen;
     
@@ -26,6 +26,7 @@ public class entity {
         HP = 1;
         name = "<NAME!>";
         gen = new Random();
+        lootrolls = 1;
     }
     
     entity(boolean alv, double hp, String nm, String is) {
@@ -33,6 +34,7 @@ public class entity {
         HP = hp;
         name = nm;
         gen = new Random();
+        lootrolls = 1;
     }
     
     public double dealDamage() {
@@ -54,14 +56,11 @@ public class entity {
         target.takeDamage(dealDamage());
     }
     
-    public item loot( ArrayList<item> possibilities) {
-        if(!looted) {
-            item chosenLoot = possibilities.get(gen.nextInt(possibilities.size() - 1));
+    public void loot( ArrayList<item> inventory) {
+        for(;lootrolls > 0; lootrolls--) {
+            item chosenLoot = inventory.get(gen.nextInt(inventory.size() - 1));
             chosenLoot.qty = lootvalue;
             System.out.println("Looting " + name + " yielded " + chosenLoot.qty + " " + chosenLoot.title);
-            looted = true;
-            return chosenLoot;
         }
-        else return new item(0,0,"","");
     }
 }

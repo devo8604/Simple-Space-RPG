@@ -36,9 +36,10 @@ public class simpleSpace {
             encounters.add(new entNPC());
         }
         possibleItems = new ArrayList();
-        possibleItems.add(new item(0, 1, "Missile", "This is a self-propelled seeking projectile. It has a high damage value.", 0., 300.));
-        possibleItems.add(new item(1, 1, "Rail Slug", "This is a rail-propelled unguided projectile. It has a med-high damage value.", 0., 150.));
-        possibleItems.add(new item(2, 1, "Repair Kit", "This is a self-deploying repair kit. Each unit repairs 1HP of damage.", 1., 0.));
+        possibleItems.add(new item(0, 100, "Missile", "This is a self-propelled seeking projectile. It has a high damage value.", 0., 300.));
+        possibleItems.add(new item(1, 100, "Rail Slug", "This is a rail-propelled unguided projectile. It has a med-high damage value.", 0., 150.));
+        possibleItems.add(new item(2, 100, "Repair Kit", "This is a self-deploying repair kit. Each unit repairs 1HP of damage.", 1., 0.));
+        player.inventory = possibleItems;
     }
     /*
      * show help function. just uses system.out.println but is used multiple times.
@@ -122,7 +123,7 @@ public class simpleSpace {
                             }
                             if (!encounters.get(gameJumpCTR).isAlive && player.isAlive) {
                                 System.out.println("Success! You vanquished " + encounters.get(gameJumpCTR).name + "! \n And now for the loot!");
-                                player.inventory.add(encounters.get(gameJumpCTR).loot(possibleItems));
+                                encounters.get(gameJumpCTR).loot(player.inventory);
                             }
                             else startGameFailEvent();
                             /*

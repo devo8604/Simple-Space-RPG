@@ -25,9 +25,19 @@ public class entNPC extends entity {
         dmgModifier = 150;
         gen = new Random();
         lootvalue = 200;
+        lootrolls = 1;
     }
     
     entNPC(boolean alive, double hitpoints, String entName, double dmgM, int lootv ) {
+        isAlive = alive;
+        HP = hitpoints;
+        name = entName;
+        gen = new Random();
+        dmgModifier = dmgM;
+        lootvalue = lootv;
+    } 
+    
+    entNPC(boolean alive, double hitpoints, String entName, double dmgM, int lootv, int lootrolls ) {
         isAlive = alive;
         HP = hitpoints;
         name = entName;
