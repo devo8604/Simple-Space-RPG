@@ -111,8 +111,7 @@ public class simpleSpace {
                             System.out.println(encounters.get(gameJumpCTR).initSpam);
                             while (encounters.get(gameJumpCTR).isAlive) {
                                 Thread.sleep(250);
-                                player.takeDamage(encounters.get(gameJumpCTR).fire());
-                                encounters.get(gameJumpCTR).takeDamage(player.fire());
+                                player.battle(encounters.get(gameJumpCTR));
                             }
                             if (!encounters.get(gameJumpCTR).isAlive) System.out.println("Success!");
                             else startGameFailEvent();
