@@ -34,7 +34,7 @@ public class event {
             return d;
         }
     }
-
+/*
     //Missile attack
     public double missile(int barrage) {
 
@@ -92,7 +92,6 @@ public class event {
             return 0;
         }
     }
-/*
     public void eneBattle(double eHP) throws InterruptedException {
 
 

@@ -9,11 +9,31 @@ import java.util.Scanner;
  */
 public class item {
 
+    int itemID;
+    double qty;
+    String title, desc;
+    
+    item() {
+        itemID = 0;
+        qty = 1;
+        title = "Not a real Item";
+        desc = "This isn't a real item. look at something else!";
+    }
+    
+    item(int id, double quantity, String name, String description) {
+        itemID = id;
+        qty = quantity;
+        title = name;
+        desc = description;
+    }
+    /*
     Scanner in = new Scanner(System.in);
     simpleSpace s = new simpleSpace();
     public static double rm = 1000; //Raw Material
     public static double m = 60;     //Missiles
     public static double r = 100;     //Railgun
+    * 
+    */
 /*
     public void inventory() throws InterruptedException {
 
@@ -81,6 +101,7 @@ public class item {
 
     }
 */
+/*
     public void missile() throws InterruptedException {
         double mi = rm / 4;
 
@@ -126,4 +147,5 @@ public class item {
             System.out.println("We can't pull material out of vacuum.");
         }
     }
+*/
 }

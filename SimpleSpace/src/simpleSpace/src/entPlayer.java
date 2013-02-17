@@ -15,7 +15,6 @@ public class entPlayer extends entity {
         /*
      * class variables
      */
-    Random gen;
     ArrayList<item> inventory;
     double HPMax;
     
@@ -25,6 +24,7 @@ public class entPlayer extends entity {
         HPMax = 2000.;
         name = "Player1";
         dmgModifier = 300;
+        inventory = new ArrayList();
     }
     
     entPlayer(boolean alive, double hitpoints, String entName, double dmgM) {
@@ -33,5 +33,6 @@ public class entPlayer extends entity {
         HPMax = hitpoints;
         name = entName;
         dmgModifier = dmgM;
+        inventory = new ArrayList();
     }
 }

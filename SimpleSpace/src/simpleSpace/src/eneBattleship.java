@@ -18,7 +18,7 @@ public class eneBattleship extends ship {
 
     public void battle() throws InterruptedException {
         //event.eneBattle(eHP);
-        item.rm += 1000;
+        //item.rm += 1000;
         System.out.println("You have recover some Raw Material.");
     }
 }
