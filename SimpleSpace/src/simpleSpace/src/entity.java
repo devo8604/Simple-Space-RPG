@@ -44,7 +44,7 @@ public class entity {
     }
     
     public void takeDamage(double damage) {
-        System.out.println(name + " took " + damage + "damage!");
+        System.out.println(name + " took " + damage + " damage!");
         HP -= damage;
         System.out.println(name + "'s health: " + HP);
         if (HP <= 0) isAlive = false;
@@ -58,9 +58,9 @@ public class entity {
     
     public void loot( ArrayList<item> inventory) {
         for(;lootrolls > 0; lootrolls--) {
-            item chosenLoot = inventory.get(gen.nextInt(inventory.size() - 1));
-            chosenLoot.qty = lootvalue;
-            System.out.println("Looting " + name + " yielded " + chosenLoot.qty + " " + chosenLoot.title);
+            int choice = gen.nextInt(inventory.size() - 1);
+            inventory.get(choice).qty += lootvalue;
+            System.out.println("Looting " + name + " yielded " + lootvalue + " " + inventory.get(choice).title + " (Total = " + inventory.get(choice).qty + ")");
         }
     }
 }
