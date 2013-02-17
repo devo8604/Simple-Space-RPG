@@ -88,13 +88,8 @@ public class simpleSpace {
         }
     }
     
-    public void mnMenu() throws InterruptedException {
-        Scanner in = new Scanner(System.in);
-        event ev = new event();
-        item item = new item();
-
-        for (; gameJumpCTR < gameJumpMAX; gameJumpCTR++) {
-            while (HP > 0) {
+    public void startGameEvent(Scanner in, event ev, item item) throws InterruptedException {
+        if (HP > 0) {
                 System.out.println("|----------------|");
                 System.out.println("|  Select one:   |");
                 System.out.println("|  1. Jump.      |");
@@ -140,10 +135,22 @@ public class simpleSpace {
 
                         break;
                 }
-            }
-
+        }
+        else {
             System.out.println("You have failed. GAME OVER");
-            System.exit(0);
+            System.exit(0);            
+        }
+    }
+    
+    public void mnMenu() throws InterruptedException {
+        Scanner in = new Scanner(System.in);
+        event ev = new event();
+        item item = new item();
+
+        for (; gameJumpCTR < gameJumpMAX; gameJumpCTR++) {
+            while (HP > 0) {
+                startGameEvent(in, ev, item);
+            }
         }
 
         System.out.println("Congratulations Captain, you have successfully brought\n"
@@ -156,7 +163,6 @@ public class simpleSpace {
     public static void main(String[] args) throws InterruptedException, Exception {
         simpleSpace game = new simpleSpace();
         game.processor(args);
-
         game.mnMenu();
     }
 
