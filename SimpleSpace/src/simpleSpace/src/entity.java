@@ -57,8 +57,8 @@ public class entity {
     public item loot( ArrayList<item> possibilities) {
         if(!looted) {
             item chosenLoot = possibilities.get(gen.nextInt(possibilities.size() - 1));
-            chosenLoot.qty *= lootvalue;
-            System.out.println("Looting " + name + " yielded " + chosenLoot.qty + " ");
+            chosenLoot.qty = lootvalue;
+            System.out.println("Looting " + name + " yielded " + chosenLoot.qty + " " + chosenLoot.title);
             looted = true;
             return chosenLoot;
         }

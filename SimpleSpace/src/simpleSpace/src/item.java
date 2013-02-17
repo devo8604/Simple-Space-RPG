@@ -11,6 +11,7 @@ public class item {
 
     int itemID, qty;
     String title, desc;
+    double repairValue, dmgValue;
     
     item() {
         itemID = 0;
@@ -24,6 +25,14 @@ public class item {
         qty = quantity;
         title = name;
         desc = description;
+    }
+    item(int id, int quantity, String name, String description, double repair, double damage) {
+        itemID = id;
+        qty = quantity;
+        title = name;
+        desc = description;
+        repairValue = repair;
+        dmgValue = damage;
     }
     /*
     Scanner in = new Scanner(System.in);
