@@ -4,6 +4,7 @@
  */
 package simpleSpace.src;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -15,7 +16,7 @@ public class entPlayer extends entity {
      * class variables
      */
     Random gen;
-    item[] inventory;
+    ArrayList<item> inventory;
     double HPMax;
     
     entPlayer() {
@@ -23,6 +24,7 @@ public class entPlayer extends entity {
         HP = 2000.;
         HPMax = 2000.;
         name = "Player1";
+        inventory.clear();
     }
     
     entPlayer(boolean alive, double hitpoints, String entName) {
@@ -30,6 +32,7 @@ public class entPlayer extends entity {
         HP = hitpoints;
         HPMax = hitpoints;
         name = entName;
+        inventory.clear();
     }
     
     public double fire() {
