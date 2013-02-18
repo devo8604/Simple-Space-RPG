@@ -25,16 +25,14 @@ public class simpleSpace {
     /*
      * Class variable declarations
      */
-    public int gameJumpCTR; // default = 1
-    public int gameJumpMAX; //default = 15
     public ArrayList<entity> encounters;
     public initGameData data = new initGameData();
 
     simpleSpace() throws ParserConfigurationException, SAXException, IOException {
-        gameJumpCTR = 0;
-        gameJumpMAX = 15;
+        data.jumpCtr = 0;
+        data.jumpMax = 15;
         encounters = new ArrayList();
-        for (int i=0; i<gameJumpMAX; i++) {
+        for (int i=0; i<data.jumpMax; i++) {
             encounters.add(new entity(data.npcs.get(data.gen.nextInt(data.npcs.size()))));
         }
         //data.plyrs.get(0).inventory = data.possibleItems;
@@ -100,7 +98,7 @@ public class simpleSpace {
         }
     }
     
-    public void startGameEvent(Scanner in, event ev, item item) throws InterruptedException {
+    public void startGameEvent(Scanner in) throws InterruptedException {
         while (data.plyrs.get(0).isAlive) {
             if (data.plyrs.get(0).isAlive) {
                     System.out.println("|----------------|");
@@ -114,15 +112,15 @@ public class simpleSpace {
 
                     switch (menuItem) {
                         case 1:
-                            gameJumpCTR++;
-                            System.out.println(encounters.get(gameJumpCTR).initSpam);
-                            while (encounters.get(gameJumpCTR).isAlive) {
+                            data.jumpCtr++;
+                            System.out.println(encounters.get(data.jumpCtr).initSpam);
+                            while (encounters.get(data.jumpCtr).isAlive) {
                                 Thread.sleep(250);
-                                data.plyrs.get(0).battle(encounters.get(gameJumpCTR));
+                                data.plyrs.get(0).battle(encounters.get(data.jumpCtr));
                             }
-                            if (!encounters.get(gameJumpCTR).isAlive && data.plyrs.get(0).isAlive) {
-                                System.out.println("Success! You vanquished " + encounters.get(gameJumpCTR).name + "! \n And now for the loot!");
-                                encounters.get(gameJumpCTR).loot(data.plyrs.get(0).inventory);
+                            if (!encounters.get(data.jumpCtr).isAlive && data.plyrs.get(0).isAlive) {
+                                System.out.println("Success! You vanquished " + encounters.get(data.jumpCtr).name + "! \n And now for the loot!");
+                                data.plyrs.get(0).loot(encounters.get(data.jumpCtr));
                             }
                             else startGameFailEvent();
                         case 2:
@@ -156,10 +154,8 @@ public class simpleSpace {
     
     public void mnMenu() throws InterruptedException {
         Scanner in = new Scanner(System.in);
-        event ev = new event();
-        item item = new item();
-        for (; gameJumpCTR < gameJumpMAX; gameJumpCTR++) {
-                startGameEvent(in, ev, item);
+        for (; data.jumpCtr < data.jumpMax; data.jumpCtr++) {
+                startGameEvent(in);
         }
         if (data.plyrs.get(0).isAlive) { startGameSuccessEvent();}
         else { startGameFailEvent(); }

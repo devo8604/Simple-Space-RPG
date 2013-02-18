@@ -25,6 +25,7 @@ public class initGameData {
     public ArrayList<item> possibleItems = new ArrayList();
     public ArrayList<entity> plyrs = new ArrayList();
     public Random gen = new Random();
+    public int jumpMax, jumpCtr;
 
     
     initGameData() {

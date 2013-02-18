@@ -97,11 +97,11 @@ public class entity {
         target.takeDamage(dealDamage());
     }
     
-    public void loot( ArrayList<item> inventory) {
-        for(;lootrolls > 0; lootrolls--) {
+    public void loot(entity target) {
+        for(;target.lootrolls > 0; target.lootrolls--) {
             int choice = gen.nextInt(inventory.size());
-            inventory.get(choice).qty += lootvalue;
-            System.out.println("Looting " + name + " yielded " + lootvalue + " " + inventory.get(choice).title + " (Total = " + inventory.get(choice).qty + ")");
+            inventory.get(choice).qty += target.lootvalue;
+            System.out.println("Looting " + target.name + " yielded " + target.lootvalue + " " + inventory.get(choice).title + " (Total = " + inventory.get(choice).qty + ")");
         }
     }
 }
