@@ -31,7 +31,7 @@ public class simpleSpace {
                 + "space, you must successfully make " + gameJumpMAX + " FTL jumps. That is " + gameJumpMAX + " times\n"
                 + "that the enemy has the oppurtunity to stop you, and turn the tide\n"
                 + "of the war in their favor...");
-        encounters = new ArrayList<entNPC>();
+        encounters = new ArrayList();
         for (int i=0; i<gameJumpMAX; i++) {
             encounters.add(new entNPC());
         }
