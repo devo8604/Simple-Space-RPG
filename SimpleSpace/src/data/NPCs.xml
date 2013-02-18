@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-
 
 <root>
+    
     <NPC>
-        <isAlive></isAlive>
-        <HP></HP>
-        <dmgModifier></dmgModifier>
-        <lootvalue></lootvalue>
-        <lootrolls></lootrolls>
-        <name></name>
-        <initSpam></initSpam>
+        <isAlive>true</isAlive>
+        <HP>1500.</HP>
+        <dmgModifier>100</dmgModifier>
+        <lootvalue>400</lootvalue>
+        <lootrolls>1</lootrolls>
+        <name>Planet Express Ship</name>
+        <initSpam>(V)...(-,,,-)...(V)</initSpam>
+    </NPC>
+    <NPC>
+        <isAlive>true</isAlive>
+        <HP>1500.</HP>
+        <dmgModifier>100</dmgModifier>
+        <lootvalue>400</lootvalue>
+        <lootrolls>1</lootrolls>
+        <name>Epic Battle Cruiser</name>
+        <initSpam>/\/\/\/\/\
+----------
+\/\/\/\/\/</initSpam>
     </NPC>
     
 </root>
