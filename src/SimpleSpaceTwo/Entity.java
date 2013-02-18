@@ -40,6 +40,7 @@ public class entity {
         HP = 3000;
         name = "Planet Express"; //make this to where player can input ship name.
         dmgModifier = 2;
+        inventory = new ArrayList();
     }
 
     public double dealDamage() {
