@@ -52,7 +52,7 @@ public class simpleSpace {
         possibleItems.add(new item(1, 100, "Rail Slug", "This is a rail-propelled unguided projectile. It has a med-high damage value.", 0., 150.));
         possibleItems.add(new item(2, 100, "Repair Kit", "This is a self-deploying repair kit. Each unit repairs 1HP of damage.", 1., 0.));
         player.inventory = possibleItems;
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream("txt_test")) {
+        try (InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/txt_test")) {
             DocumentBuilder db;
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             db = dbf.newDocumentBuilder();
