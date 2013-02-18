@@ -30,7 +30,6 @@ public class simpleSpace {
     public ArrayList<entity> encounters;
     public ArrayList<item> possibleItems;
     public entity player;
-    public Random gen = new Random();
     public initGameData data = new initGameData();
 
     simpleSpace() throws ParserConfigurationException, SAXException, IOException {
@@ -39,7 +38,7 @@ public class simpleSpace {
         gameJumpMAX = 15;
         encounters = new ArrayList();
         for (int i=0; i<gameJumpMAX; i++) {
-            encounters.add(new entity());
+            encounters.add(data.npcs.get(player.gen.nextInt(data.npcs.size())));
         }
         possibleItems = new ArrayList();
         possibleItems.add(new item(0, 100, "Missile", "This is a self-propelled seeking projectile. It has a high damage value.", 0., 300.));
