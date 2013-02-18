@@ -18,14 +18,19 @@ public class entity {
     public boolean isAlive;
     public double HP, dmgModifier;
     public int lootvalue, lootrolls;
-    public String name;
+    public String name, initSpam;
     public Random gen = new Random();
+    ArrayList<item> inventory;
+    double HPMax;
     
     entity() {
         isAlive = true;
-        HP = 1;
-        name = "<NAME!>";
+        HP = 2000;
+        name = "Porphyrian Battle Cruiser";
+        dmgModifier = 150;
+        lootvalue = 200;
         lootrolls = 1;
+        initSpam = "(V)...(-,,,-)...(Y) A crab like ship approaches!";
     }
     
     entity(boolean alv, double hp, String nm, String is) {
@@ -35,6 +40,31 @@ public class entity {
         lootrolls = 1;
     }
     
+    entity(boolean alive, double hitpoints, String entName, double dmgM, int lootv ) {
+        isAlive = alive;
+        HP = hitpoints;
+        name = entName;
+        dmgModifier = dmgM;
+        lootvalue = lootv;
+        lootrolls = 1;
+    } 
+    
+    entity(boolean alive, double hitpoints, String entName, double dmgM, int lootv, int lootrolls ) {
+        isAlive = alive;
+        HP = hitpoints;
+        name = entName;
+        dmgModifier = dmgM;
+        lootvalue = lootv;
+    }
+    
+    entity(boolean alive, double hitpoints, String entName, double dmgM) {
+        isAlive = alive;
+        HP = hitpoints;
+        HPMax = hitpoints;
+        name = entName;
+        dmgModifier = dmgM;
+        inventory = new ArrayList();
+    }    
     public double dealDamage() {
         double result = dmgModifier * gen.nextDouble();
         System.out.println(name + " fired for " + result + " damage!");

@@ -27,13 +27,13 @@ public class simpleSpace {
      */
     public int gameJumpCTR; // default = 1
     public int gameJumpMAX; //default = 15
-    public ArrayList<entNPC> encounters;
+    public ArrayList<entity> encounters;
     public ArrayList<item> possibleItems;
-    public entPlayer player;
+    public entity player;
     public Random gen = new Random();
 
     simpleSpace() throws ParserConfigurationException, SAXException, IOException {
-        player = new entPlayer();
+        player = new entity(true, 2000., "Player1", 400.);
         gameJumpCTR = 0;
         gameJumpMAX = 15;
         System.out.println("In a Galaxy far far far away in the distant future,\n"
@@ -45,14 +45,14 @@ public class simpleSpace {
                 + "of the war in their favor...");
         encounters = new ArrayList();
         for (int i=0; i<gameJumpMAX; i++) {
-            encounters.add(new entNPC());
+            encounters.add(new entity());
         }
         possibleItems = new ArrayList();
         possibleItems.add(new item(0, 100, "Missile", "This is a self-propelled seeking projectile. It has a high damage value.", 0., 300.));
         possibleItems.add(new item(1, 100, "Rail Slug", "This is a rail-propelled unguided projectile. It has a med-high damage value.", 0., 150.));
         possibleItems.add(new item(2, 100, "Repair Kit", "This is a self-deploying repair kit. Each unit repairs 1HP of damage.", 1., 0.));
         player.inventory = possibleItems;
-        try (InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/txt_test")){
+        try (InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/prologue.xml")){
             if (is != null) {
                 DocumentBuilder db;
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
