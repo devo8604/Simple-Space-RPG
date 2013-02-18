@@ -1,20 +1,23 @@
 package SimpleSpaceTwo;
 
+import java.util.ArrayList;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
 /**
- *
+ * @version 0.02
  * @author devonsmith
  */
 public class SimpleSpaceTwo {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+      
+        public int gameJumpCTR; //default 1
+        public int gameJumpMAX; //deault 15
+        public ArrayList<entity> encounters;
+        
     }
 }
