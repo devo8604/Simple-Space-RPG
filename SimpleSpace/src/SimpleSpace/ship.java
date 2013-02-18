@@ -1,5 +1,5 @@
 
-package simpleSpace.src;
+package SimpleSpace;
 
 /**
  *

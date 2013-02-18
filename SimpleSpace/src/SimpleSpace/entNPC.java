@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package simpleSpace.src;
+package SimpleSpace;
 
 import java.util.Random;
 
@@ -25,6 +25,7 @@ public class entNPC extends entity {
         gen = new Random();
         lootvalue = 200;
         lootrolls = 1;
+        initSpam = "(V)...(-,,,-)...(Y) A crab like ship approaches!";
     }
     
     entNPC(boolean alive, double hitpoints, String entName, double dmgM, int lootv ) {
@@ -34,6 +35,7 @@ public class entNPC extends entity {
         gen = new Random();
         dmgModifier = dmgM;
         lootvalue = lootv;
+        lootrolls = 1;
     } 
     
     entNPC(boolean alive, double hitpoints, String entName, double dmgM, int lootv, int lootrolls ) {
@@ -44,5 +46,4 @@ public class entNPC extends entity {
         dmgModifier = dmgM;
         lootvalue = lootv;
     } 
-
 }
