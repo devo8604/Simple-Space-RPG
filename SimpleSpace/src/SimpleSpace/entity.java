@@ -33,6 +33,19 @@ public class entity {
         initSpam = "(V)...(-,,,-)...(Y) A crab like ship approaches!";
     }
     
+    entity(entity a) {
+        this.isAlive = a.isAlive;
+        this.HP = a.HP;
+        this.dmgModifier = a.dmgModifier;
+        this.lootvalue = a.lootvalue;
+        this.lootrolls = a.lootrolls;
+        this.name = a.name;
+        this.initSpam = a.initSpam;
+        this.gen = a.gen;
+        this.inventory = a.inventory;
+        this.HPMax = a.HPMax;
+    }
+    
     entity(boolean alv, double hp, String nm, String is) {
         isAlive = alv;
         HP = hp;
