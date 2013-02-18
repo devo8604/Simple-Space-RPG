@@ -122,9 +122,8 @@ public void mnMenu() throws InterruptedException {
     }
 
 
-public static void main(String[] args) {
+public static void main(String[] args) throws InterruptedException {
 SimpleSpaceTwo game = new SimpleSpaceTwo();
-        game.processor(args);
         game.mnMenu();    
 }
 }
