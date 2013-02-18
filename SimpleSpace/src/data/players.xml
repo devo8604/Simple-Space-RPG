@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<root>
+    <player>
+        <isAlive>true</isAlive>
+        <HP>4000</HP>
+        <HPMax>4000</HPMax>
+        <dmgModifier>400</dmgModifier>
+        <lootvalue>0</lootvalue>
+        <lootrolls>0</lootrolls>
+        <name>Player1</name>
+        <initSpam></initSpam>
+    </player>
+</root>

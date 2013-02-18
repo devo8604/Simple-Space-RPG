@@ -6,6 +6,7 @@ package SimpleSpace;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
@@ -22,6 +23,8 @@ public class initGameData {
     public String prologueTXT;
     public ArrayList<entity> npcs = new ArrayList();
     public ArrayList<item> possibleItems = new ArrayList();
+    public ArrayList<entity> plyrs = new ArrayList();
+    public Random gen = new Random();
 
     
     initGameData() {
@@ -29,6 +32,7 @@ public class initGameData {
             setPrologue();
             setNPCs();
             setItems();
+            setPlyrs();
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
@@ -136,5 +140,57 @@ public class initGameData {
                 }
             }
         }
+    }
+    
+    public void setPlyrs() throws ParserConfigurationException, SAXException, IOException {
+        Document PLYRDATA = fileData.readXMLinJAR("data/players.xml");
+        NodeList nl = PLYRDATA.getDocumentElement().getElementsByTagName("player");
+        for(int ctr = 0;ctr < nl.getLength(); ctr++) {
+            npcs.add(new entity());
+            for(int i = 0; i < nl.item(ctr).getChildNodes().getLength(); i++) {
+                if(nl.item(ctr).getChildNodes().item(i).getLocalName() != null) {
+                    if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("isAlive")) {
+                        npcs.get(ctr).isAlive = true;
+                        System.out.println("Found isAlive value! Setting player's isAlive value to: " +
+                                npcs.get(ctr).isAlive);
+                    }
+                    else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("HP")) {
+                        npcs.get(ctr).HP = Double.parseDouble(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        System.out.println("Found HP value! Setting player's HP value to: " +
+                                npcs.get(ctr).HP);
+                    }
+                    else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("HPMax")) {
+                        npcs.get(ctr).HPMax = Double.parseDouble(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        System.out.println("Found HP Maxvalue! Setting player's HP Max value to: " +
+                                npcs.get(ctr).HPMax);
+                    }                    
+                    else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("dmgModifier")) {
+                        npcs.get(ctr).dmgModifier = Double.parseDouble(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        System.out.println("Found dmgModifier value! Setting player's dmgModifier value to: " +
+                                npcs.get(ctr).dmgModifier);
+                    }
+                    else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("lootvalue")) {
+                        npcs.get(ctr).lootvalue = Integer.parseInt(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        System.out.println("Found loot value! Setting player's loot value to: " +
+                                npcs.get(ctr).lootvalue); 
+                    }   
+                    else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("lootrolls")) {
+                        npcs.get(ctr).lootrolls = Integer.parseInt(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        System.out.println("Found loot roll value! Setting player's loot roll value to: " +
+                                npcs.get(ctr).lootrolls);
+                    }
+                    else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("name")) {
+                        npcs.get(ctr).name = nl.item(ctr).getChildNodes().item(i).getTextContent();
+                        System.out.println("Found name value! Setting player's name value to: " +
+                                npcs.get(ctr).name); 
+                    }
+                    else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("initSpam")) {
+                        npcs.get(ctr).initSpam = nl.item(ctr).getChildNodes().item(i).getTextContent();
+                        System.out.println("Found initSpam value! Setting player's initSpam value to: " +
+                                npcs.get(ctr).initSpam);  
+                    }                    
+                }
+            }
+        }        
     }
 }

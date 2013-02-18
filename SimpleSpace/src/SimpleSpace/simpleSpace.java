@@ -28,18 +28,16 @@ public class simpleSpace {
     public int gameJumpCTR; // default = 1
     public int gameJumpMAX; //default = 15
     public ArrayList<entity> encounters;
-    public entity player;
     public initGameData data = new initGameData();
 
     simpleSpace() throws ParserConfigurationException, SAXException, IOException {
-        player = new entity(true, 2000., "Player1", 400.);
         gameJumpCTR = 0;
         gameJumpMAX = 15;
         encounters = new ArrayList();
         for (int i=0; i<gameJumpMAX; i++) {
-            encounters.add(new entity(data.npcs.get(player.gen.nextInt(data.npcs.size()))));
+            encounters.add(new entity(data.npcs.get(data.gen.nextInt(data.npcs.size()))));
         }
-        player.inventory = data.possibleItems;
+        //data.plyrs.get(0).inventory = data.possibleItems;
         System.out.println(data.getPrologue());
     }
     /*
@@ -103,8 +101,8 @@ public class simpleSpace {
     }
     
     public void startGameEvent(Scanner in, event ev, item item) throws InterruptedException {
-        while (player.isAlive) {
-            if (player.isAlive) {
+        while (data.plyrs.get(0).isAlive) {
+            if (data.plyrs.get(0).isAlive) {
                     System.out.println("|----------------|");
                     System.out.println("|  Select one:   |");
                     System.out.println("|  1. Jump.      |");
@@ -120,11 +118,11 @@ public class simpleSpace {
                             System.out.println(encounters.get(gameJumpCTR).initSpam);
                             while (encounters.get(gameJumpCTR).isAlive) {
                                 Thread.sleep(250);
-                                player.battle(encounters.get(gameJumpCTR));
+                                data.plyrs.get(0).battle(encounters.get(gameJumpCTR));
                             }
-                            if (!encounters.get(gameJumpCTR).isAlive && player.isAlive) {
+                            if (!encounters.get(gameJumpCTR).isAlive && data.plyrs.get(0).isAlive) {
                                 System.out.println("Success! You vanquished " + encounters.get(gameJumpCTR).name + "! \n And now for the loot!");
-                                encounters.get(gameJumpCTR).loot(player.inventory);
+                                encounters.get(gameJumpCTR).loot(data.plyrs.get(0).inventory);
                             }
                             else startGameFailEvent();
                         case 2:
@@ -163,7 +161,7 @@ public class simpleSpace {
         for (; gameJumpCTR < gameJumpMAX; gameJumpCTR++) {
                 startGameEvent(in, ev, item);
         }
-        if (player.isAlive) { startGameSuccessEvent();}
+        if (data.plyrs.get(0).isAlive) { startGameSuccessEvent();}
         else { startGameFailEvent(); }
     }
     
