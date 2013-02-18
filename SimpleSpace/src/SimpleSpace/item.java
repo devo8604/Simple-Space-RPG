@@ -25,6 +25,8 @@ public class item {
         qty = quantity;
         title = name;
         desc = description;
+        repairValue = 0.;
+        dmgValue = 0.;
     }
     item(int id, int quantity, String name, String description, double repair, double damage) {
         itemID = id;
