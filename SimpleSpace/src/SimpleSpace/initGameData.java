@@ -148,6 +148,7 @@ public class initGameData {
         NodeList nl = PLYRDATA.getDocumentElement().getElementsByTagName("player");
         for(int ctr = 0;ctr < nl.getLength(); ctr++) {
             plyrs.add(new entity());
+            plyrs.get(ctr).inventory = possibleItems;
             for(int i = 0; i < nl.item(ctr).getChildNodes().getLength(); i++) {
                 if(nl.item(ctr).getChildNodes().item(i).getLocalName() != null) {
                     if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("isAlive")) {

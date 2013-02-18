@@ -20,7 +20,7 @@ public class entity {
     public int lootvalue, lootrolls;
     public String name, initSpam;
     public Random gen = new Random();
-    ArrayList<item> inventory;
+    ArrayList<item> inventory = new ArrayList();
     double HPMax;
     
     entity() {
@@ -76,7 +76,6 @@ public class entity {
         HPMax = hitpoints;
         name = entName;
         dmgModifier = dmgM;
-        inventory = new ArrayList();
     }    
     public double dealDamage() {
         double result = dmgModifier * gen.nextDouble();
@@ -98,8 +97,8 @@ public class entity {
     }
     
     public void loot(entity target) {
+        int choice = gen.nextInt(inventory.size());
         for(;target.lootrolls > 0; target.lootrolls--) {
-            int choice = gen.nextInt(inventory.size());
             inventory.get(choice).qty += target.lootvalue;
             System.out.println("Looting " + target.name + " yielded " + target.lootvalue + " " + inventory.get(choice).title + " (Total = " + inventory.get(choice).qty + ")");
         }

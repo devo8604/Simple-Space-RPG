@@ -35,7 +35,6 @@ public class simpleSpace {
         for (int i=0; i<data.jumpMax; i++) {
             encounters.add(new entity(data.npcs.get(data.gen.nextInt(data.npcs.size()))));
         }
-        //data.plyrs.get(0).inventory = data.possibleItems;
         System.out.println(data.getPrologue());
     }
     /*
