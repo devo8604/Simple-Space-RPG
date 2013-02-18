@@ -21,7 +21,7 @@ public class entity {
     public int lootvalue, lootrolls;
     public String name, initSpam;
     public Random gen = new Random();
-    ArrayList<item> inventory;
+    public static ArrayList<item> inventory;
     double HPMax;
 
     
@@ -35,11 +35,11 @@ public class entity {
         lootrolls = lootr;
     }
     //Player Method
-    entity() {
-        isAlive = true;
-        HP = 3000;
-        name = "Planet Express"; //make this to where player can input ship name.
-        dmgModifier = 2;
+    entity(boolean alive, double hitpoints, String entName, double dmgM) {
+        isAlive = alive;
+        HP = hitpoints;
+        name = entName; //make this to where player can input ship name.
+        dmgModifier = dmgM;
         inventory = new ArrayList();
     }
 
