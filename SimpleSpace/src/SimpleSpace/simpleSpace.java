@@ -52,12 +52,14 @@ public class simpleSpace {
         possibleItems.add(new item(1, 100, "Rail Slug", "This is a rail-propelled unguided projectile. It has a med-high damage value.", 0., 150.));
         possibleItems.add(new item(2, 100, "Repair Kit", "This is a self-deploying repair kit. Each unit repairs 1HP of damage.", 1., 0.));
         player.inventory = possibleItems;
-        try (InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/txt_test")) {
+        try (InputStream is = this.getClass().getResourceAsStream("data/txt_test")){
+            if (is != null) {
             DocumentBuilder db;
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             db = dbf.newDocumentBuilder();
             db.parse(is);
             System.out.println(db.toString());
+            } else System.out.println("File didn't open!");
         }
 
     }
