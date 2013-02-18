@@ -99,7 +99,7 @@ public class entity {
     
     public void loot( ArrayList<item> inventory) {
         for(;lootrolls > 0; lootrolls--) {
-            int choice = gen.nextInt(inventory.size() - 1);
+            int choice = gen.nextInt(inventory.size());
             inventory.get(choice).qty += lootvalue;
             System.out.println("Looting " + name + " yielded " + lootvalue + " " + inventory.get(choice).title + " (Total = " + inventory.get(choice).qty + ")");
         }
