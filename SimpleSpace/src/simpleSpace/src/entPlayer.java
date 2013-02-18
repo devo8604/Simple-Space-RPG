@@ -5,7 +5,6 @@
 package simpleSpace.src;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  *
