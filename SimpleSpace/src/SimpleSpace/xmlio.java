@@ -11,6 +11,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -21,11 +23,7 @@ import org.xml.sax.SAXException;
  */
 public class xmlio {
     xmlio() throws ParserConfigurationException, SAXException, IOException{
-            try (InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/prologue.xml")){
-            if (is != null) {
-                Document prologue = readXML(is);
-            } else System.out.println("File didn't open!");
-        }
+
     }
     
     public Document readXML(InputStream is) throws ParserConfigurationException, SAXException, IOException {
@@ -38,6 +36,16 @@ public class xmlio {
         db = dbf.newDocumentBuilder();
         db.setEntityResolver(new NullResolver());
         return db.parse(is);
+    }
+    
+    public String getPrologue() throws ParserConfigurationException, SAXException, IOException{
+            try (InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/prologue.xml")){
+            if (is != null) {
+                Document prologue = readXML(is);
+                NodeList nl = prologue.getDocumentElement().getElementsByTagName("mtext");
+                return nl.item(0).getTextContent();
+            } else return "File didn't open!";
+        }        
     }
 }
 

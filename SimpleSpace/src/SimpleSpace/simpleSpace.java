@@ -37,13 +37,6 @@ public class simpleSpace {
         player = new entity(true, 2000., "Player1", 400.);
         gameJumpCTR = 0;
         gameJumpMAX = 15;
-        System.out.println("In a Galaxy far far far away in the distant future,\n"
-                + "you are the Captain of an alliance battleship, trapped deep\n"
-                + "within enemy territory with Intelligence information that could\n"
-                + "finally put an end to this war. In order to make it back to Alliance\n"
-                + "space, you must successfully make " + gameJumpMAX + " FTL jumps. That is " + gameJumpMAX + " times\n"
-                + "that the enemy has the oppurtunity to stop you, and turn the tide\n"
-                + "of the war in their favor...");
         encounters = new ArrayList();
         for (int i=0; i<gameJumpMAX; i++) {
             encounters.add(new entity());
@@ -53,8 +46,7 @@ public class simpleSpace {
         possibleItems.add(new item(1, 100, "Rail Slug", "This is a rail-propelled unguided projectile. It has a med-high damage value.", 0., 150.));
         possibleItems.add(new item(2, 100, "Repair Kit", "This is a self-deploying repair kit. Each unit repairs 1HP of damage.", 1., 0.));
         player.inventory = possibleItems;
-
-
+        System.out.println(data.getPrologue());
     }
     /*
      * show help function. just uses system.out.println but is used multiple times.
