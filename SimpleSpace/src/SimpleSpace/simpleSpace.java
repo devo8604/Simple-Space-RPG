@@ -28,7 +28,6 @@ public class simpleSpace {
     public int gameJumpCTR; // default = 1
     public int gameJumpMAX; //default = 15
     public ArrayList<entity> encounters;
-    public ArrayList<item> possibleItems;
     public entity player;
     public initGameData data = new initGameData();
 
@@ -40,11 +39,12 @@ public class simpleSpace {
         for (int i=0; i<gameJumpMAX; i++) {
             encounters.add(new entity(data.npcs.get(player.gen.nextInt(data.npcs.size()))));
         }
-        possibleItems = new ArrayList();
-        possibleItems.add(new item(0, 100, "Missile", "This is a self-propelled seeking projectile. It has a high damage value.", 0., 300.));
-        possibleItems.add(new item(1, 100, "Rail Slug", "This is a rail-propelled unguided projectile. It has a med-high damage value.", 0., 150.));
-        possibleItems.add(new item(2, 100, "Repair Kit", "This is a self-deploying repair kit. Each unit repairs 1HP of damage.", 1., 0.));
-        player.inventory = possibleItems;
+/*      
+        data.possibleItems.add(new item(0, 100, "Missile", "This is a self-propelled seeking projectile. It has a high damage value.", 0., 300.));
+        data.possibleItems.add(new item(1, 100, "Rail Slug", "This is a rail-propelled unguided projectile. It has a med-high damage value.", 0., 150.));
+        data.possibleItems.add(new item(2, 100, "Repair Kit", "This is a self-deploying repair kit. Each unit repairs 1HP of damage.", 1., 0.));
+*/
+        player.inventory = data.possibleItems;
         System.out.println(data.getPrologue());
     }
     /*

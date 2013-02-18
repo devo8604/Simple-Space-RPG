@@ -21,11 +21,14 @@ public class initGameData {
     public xmlio fileData = new xmlio();
     public String prologueTXT;
     public ArrayList<entity> npcs = new ArrayList();
+    public ArrayList<item> possibleItems = new ArrayList();
+
     
     initGameData() {
         try {
             setPrologue();
             setNPCs();
+            setItems();
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
@@ -91,5 +94,47 @@ public class initGameData {
             }
         }
 
+    }
+    
+    public void setItems() throws ParserConfigurationException, SAXException, IOException {
+        Document itemlist = fileData.readXMLinJAR("data/items.xml");
+        NodeList nl = itemlist.getDocumentElement().getElementsByTagName("item");
+        for(int ctr = 0;ctr < nl.getLength(); ctr++) {
+            possibleItems.add(new item());
+            for(int i = 0; i < nl.item(ctr).getChildNodes().getLength(); i++) {
+                if(nl.item(ctr).getChildNodes().item(i).getLocalName() != null) {
+                    if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("itemID")) {
+                        possibleItems.get(ctr).itemID = Integer.parseInt(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        System.out.println("Found itemID value! Setting item's itemID value to: " +
+                                possibleItems.get(ctr).itemID);
+                    } 
+                    else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("qty")) {
+                        possibleItems.get(ctr).qty = Integer.parseInt(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        System.out.println("Found qty value! Setting item's qty value to: " +
+                                possibleItems.get(ctr).qty);
+                    }
+                    else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("title")) {
+                        possibleItems.get(ctr).title = nl.item(ctr).getChildNodes().item(i).getTextContent();
+                        System.out.println("Found title value! Setting item's title value to: " +
+                                possibleItems.get(ctr).title);
+                    } 
+                    else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("desc")) {
+                        possibleItems.get(ctr).desc = nl.item(ctr).getChildNodes().item(i).getTextContent();
+                        System.out.println("Found desc value! Setting item's desc value to: " +
+                                possibleItems.get(ctr).desc);
+                    } 
+                    else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("repairValue")) {
+                        possibleItems.get(ctr).repairValue = Double.parseDouble(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        System.out.println("Found repair value! Setting item's repair value to: " +
+                                possibleItems.get(ctr).repairValue);
+                    }  
+                    else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("dmgValue")) {
+                        possibleItems.get(ctr).dmgValue = Double.parseDouble(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        System.out.println("Found damage value! Setting item's damage value to: " +
+                                possibleItems.get(ctr).dmgValue);
+                    }                      
+                }
+            }
+        }
     }
 }
