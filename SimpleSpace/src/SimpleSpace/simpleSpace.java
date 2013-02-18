@@ -31,7 +31,7 @@ public class simpleSpace {
     public ArrayList<item> possibleItems;
     public entity player;
     public Random gen = new Random();
-    public xmlio data = new xmlio();
+    public initGameData data = new initGameData();
 
     simpleSpace() throws ParserConfigurationException, SAXException, IOException {
         player = new entity(true, 2000., "Player1", 400.);

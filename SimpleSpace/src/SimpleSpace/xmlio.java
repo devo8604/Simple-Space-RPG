@@ -23,9 +23,7 @@ import org.xml.sax.SAXException;
  * @author G89390
  */
 public class xmlio {
-    xmlio() throws ParserConfigurationException, SAXException, IOException{
-
-    }
+    xmlio() { }
     
     public Document readXMLinJAR(String fname) throws ParserConfigurationException, SAXException, IOException {
         try (InputStream is = this.getClass().getClassLoader().getResourceAsStream(fname)){
@@ -46,17 +44,6 @@ public class xmlio {
                 return null;
             }
         }
-    }
-    
-    public String getPrologue() throws ParserConfigurationException, SAXException, IOException{
-        Document prologue = readXMLinJAR("data/prologue.xml");
-        NodeList nl = prologue.getDocumentElement().getElementsByTagName("mtext");
-        return nl.item(0).getTextContent();
-    }
-    
-    public ArrayList<entity> getNPCs() {
-        ArrayList<entity> npcs = new ArrayList();
-        return npcs;
     }
 }
 
