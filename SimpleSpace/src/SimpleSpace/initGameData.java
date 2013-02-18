@@ -146,48 +146,48 @@ public class initGameData {
         Document PLYRDATA = fileData.readXMLinJAR("data/players.xml");
         NodeList nl = PLYRDATA.getDocumentElement().getElementsByTagName("player");
         for(int ctr = 0;ctr < nl.getLength(); ctr++) {
-            npcs.add(new entity());
+            plyrs.add(new entity());
             for(int i = 0; i < nl.item(ctr).getChildNodes().getLength(); i++) {
                 if(nl.item(ctr).getChildNodes().item(i).getLocalName() != null) {
                     if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("isAlive")) {
-                        npcs.get(ctr).isAlive = true;
+                        plyrs.get(ctr).isAlive = true;
                         System.out.println("Found isAlive value! Setting player's isAlive value to: " +
                                 npcs.get(ctr).isAlive);
                     }
                     else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("HP")) {
-                        npcs.get(ctr).HP = Double.parseDouble(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        plyrs.get(ctr).HP = Double.parseDouble(nl.item(ctr).getChildNodes().item(i).getTextContent());
                         System.out.println("Found HP value! Setting player's HP value to: " +
-                                npcs.get(ctr).HP);
+                                plyrs.get(ctr).HP);
                     }
                     else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("HPMax")) {
-                        npcs.get(ctr).HPMax = Double.parseDouble(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        plyrs.get(ctr).HPMax = Double.parseDouble(nl.item(ctr).getChildNodes().item(i).getTextContent());
                         System.out.println("Found HP Maxvalue! Setting player's HP Max value to: " +
-                                npcs.get(ctr).HPMax);
+                                plyrs.get(ctr).HPMax);
                     }                    
                     else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("dmgModifier")) {
-                        npcs.get(ctr).dmgModifier = Double.parseDouble(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        plyrs.get(ctr).dmgModifier = Double.parseDouble(nl.item(ctr).getChildNodes().item(i).getTextContent());
                         System.out.println("Found dmgModifier value! Setting player's dmgModifier value to: " +
-                                npcs.get(ctr).dmgModifier);
+                                plyrs.get(ctr).dmgModifier);
                     }
                     else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("lootvalue")) {
-                        npcs.get(ctr).lootvalue = Integer.parseInt(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        plyrs.get(ctr).lootvalue = Integer.parseInt(nl.item(ctr).getChildNodes().item(i).getTextContent());
                         System.out.println("Found loot value! Setting player's loot value to: " +
-                                npcs.get(ctr).lootvalue); 
+                                plyrs.get(ctr).lootvalue); 
                     }   
                     else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("lootrolls")) {
-                        npcs.get(ctr).lootrolls = Integer.parseInt(nl.item(ctr).getChildNodes().item(i).getTextContent());
+                        plyrs.get(ctr).lootrolls = Integer.parseInt(nl.item(ctr).getChildNodes().item(i).getTextContent());
                         System.out.println("Found loot roll value! Setting player's loot roll value to: " +
-                                npcs.get(ctr).lootrolls);
+                                plyrs.get(ctr).lootrolls);
                     }
                     else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("name")) {
-                        npcs.get(ctr).name = nl.item(ctr).getChildNodes().item(i).getTextContent();
+                        plyrs.get(ctr).name = nl.item(ctr).getChildNodes().item(i).getTextContent();
                         System.out.println("Found name value! Setting player's name value to: " +
-                                npcs.get(ctr).name); 
+                                plyrs.get(ctr).name); 
                     }
                     else if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("initSpam")) {
-                        npcs.get(ctr).initSpam = nl.item(ctr).getChildNodes().item(i).getTextContent();
+                        plyrs.get(ctr).initSpam = nl.item(ctr).getChildNodes().item(i).getTextContent();
                         System.out.println("Found initSpam value! Setting player's initSpam value to: " +
-                                npcs.get(ctr).initSpam);  
+                                plyrs.get(ctr).initSpam);  
                     }                    
                 }
             }
