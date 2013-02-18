@@ -20,10 +20,9 @@ public class simpleSpace {
     public ArrayList<entNPC> encounters;
     public ArrayList<item> possibleItems;
     public entPlayer player;
-    public Random gen;
+    public Random gen = new Random();
 
     simpleSpace() {
-        gen = new Random();
         player = new entPlayer();
         gameJumpCTR = 0;
         gameJumpMAX = 15;

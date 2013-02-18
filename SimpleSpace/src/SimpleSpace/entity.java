@@ -19,13 +19,12 @@ public class entity {
     public double HP, dmgModifier;
     public int lootvalue, lootrolls;
     public String name;
-    public Random gen;
+    public Random gen = new Random();
     
     entity() {
         isAlive = true;
         HP = 1;
         name = "<NAME!>";
-        gen = new Random();
         lootrolls = 1;
     }
     
@@ -33,7 +32,6 @@ public class entity {
         isAlive = alv;
         HP = hp;
         name = nm;
-        gen = new Random();
         lootrolls = 1;
     }
     

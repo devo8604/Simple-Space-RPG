@@ -22,7 +22,6 @@ public class entNPC extends entity {
         HP = 2000;
         name = "Porphyrian Battle Cruiser";
         dmgModifier = 150;
-        gen = new Random();
         lootvalue = 200;
         lootrolls = 1;
         initSpam = "(V)...(-,,,-)...(Y) A crab like ship approaches!";
@@ -32,7 +31,6 @@ public class entNPC extends entity {
         isAlive = alive;
         HP = hitpoints;
         name = entName;
-        gen = new Random();
         dmgModifier = dmgM;
         lootvalue = lootv;
         lootrolls = 1;
@@ -42,7 +40,6 @@ public class entNPC extends entity {
         isAlive = alive;
         HP = hitpoints;
         name = entName;
-        gen = new Random();
         dmgModifier = dmgM;
         lootvalue = lootv;
     } 
