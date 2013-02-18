@@ -7,6 +7,7 @@ package SimpleSpace;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
+import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,26 +27,36 @@ public class xmlio {
 
     }
     
-    public Document readXML(InputStream is) throws ParserConfigurationException, SAXException, IOException {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        dbf.setValidating(false);
-        dbf.setIgnoringComments(false);
-        dbf.setIgnoringElementContentWhitespace(true);
-        dbf.setNamespaceAware(true);
-        DocumentBuilder db = null;
-        db = dbf.newDocumentBuilder();
-        db.setEntityResolver(new NullResolver());
-        return db.parse(is);
+    public Document readXMLinJAR(String fname) throws ParserConfigurationException, SAXException, IOException {
+        try (InputStream is = this.getClass().getClassLoader().getResourceAsStream(fname)){
+            if (is != null) {
+                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                dbf.setValidating(false);
+                dbf.setIgnoringComments(false);
+                dbf.setIgnoringElementContentWhitespace(true);
+                dbf.setNamespaceAware(true);
+                DocumentBuilder db = null;
+                db = dbf.newDocumentBuilder();
+                db.setEntityResolver(new NullResolver());
+                return db.parse(is);
+            }
+            else {
+                System.out.println("File read " + fname + " failed!");
+                System.exit(9);
+                return null;
+            }
+        }
     }
     
     public String getPrologue() throws ParserConfigurationException, SAXException, IOException{
-            try (InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/prologue.xml")){
-            if (is != null) {
-                Document prologue = readXML(is);
-                NodeList nl = prologue.getDocumentElement().getElementsByTagName("mtext");
-                return nl.item(0).getTextContent();
-            } else return "File didn't open!";
-        }        
+        Document prologue = readXMLinJAR("data/prologue.xml");
+        NodeList nl = prologue.getDocumentElement().getElementsByTagName("mtext");
+        return nl.item(0).getTextContent();
+    }
+    
+    public ArrayList<entity> getNPCs() {
+        ArrayList<entity> npcs = new ArrayList();
+        return npcs;
     }
 }
 
