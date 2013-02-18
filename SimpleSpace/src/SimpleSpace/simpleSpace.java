@@ -38,7 +38,7 @@ public class simpleSpace {
         gameJumpMAX = 15;
         encounters = new ArrayList();
         for (int i=0; i<gameJumpMAX; i++) {
-            encounters.add(data.npcs.get(player.gen.nextInt(data.npcs.size())));
+            encounters.add(new entity(data.npcs.get(player.gen.nextInt(data.npcs.size()))));
         }
         possibleItems = new ArrayList();
         possibleItems.add(new item(0, 100, "Missile", "This is a self-propelled seeking projectile. It has a high damage value.", 0., 300.));
