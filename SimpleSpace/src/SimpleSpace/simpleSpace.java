@@ -6,8 +6,18 @@ package SimpleSpace;
  * @author Devon Smith
  */
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 import sun.misc.IOUtils;
 
 public class simpleSpace {
@@ -22,7 +32,7 @@ public class simpleSpace {
     public entPlayer player;
     public Random gen = new Random();
 
-    simpleSpace() {
+    simpleSpace() throws ParserConfigurationException, SAXException, IOException {
         player = new entPlayer();
         gameJumpCTR = 0;
         gameJumpMAX = 15;
@@ -42,8 +52,14 @@ public class simpleSpace {
         possibleItems.add(new item(1, 100, "Rail Slug", "This is a rail-propelled unguided projectile. It has a med-high damage value.", 0., 150.));
         possibleItems.add(new item(2, 100, "Repair Kit", "This is a self-deploying repair kit. Each unit repairs 1HP of damage.", 1., 0.));
         player.inventory = possibleItems;
-        InputStream is =this.getClass().getClassLoader().getResourceAsStream("txt_test");
-        Scanner scan = new Scanner(is);
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream("txt_test")) {
+            DocumentBuilder db;
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            db = dbf.newDocumentBuilder();
+            db.parse(is);
+            System.out.println(db.toString());
+        }
+
     }
     /*
      * show help function. just uses system.out.println but is used multiple times.
