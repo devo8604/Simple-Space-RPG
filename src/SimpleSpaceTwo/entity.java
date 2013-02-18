@@ -23,6 +23,7 @@ public class entity {
     public Random gen = new Random();
     public static ArrayList<item> inventory;
     double HPMax;
+    
 
     
     //NPC Method
@@ -55,6 +56,7 @@ public class entity {
         System.out.println(name + "'s health: " + HP);
         if (HP <= 0) {
             isAlive = false;
+            SimpleSpaceTwo.startGameFailEvent();
         } else {
             isAlive = true;
         }

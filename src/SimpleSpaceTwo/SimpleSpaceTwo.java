@@ -26,7 +26,7 @@ public class SimpleSpaceTwo {
 
     SimpleSpaceTwo() {
         //Player Cotr: (isAlive, HP, Name, Damage Modifier)
-        player = new entity(true, 3000, "Planet Express", 2);
+        player = new entity(true, 3000, "Planet Express", 50);
         gameJumpCTR = 0;
         gameJumpMAX = 15;
         System.out.println("In a Galaxy far far far away in the distant future,\n"
@@ -41,9 +41,9 @@ public class SimpleSpaceTwo {
         for (int i = 0; i < gameJumpMAX; i++) {
 
             //NPC cotr: (isAlive, HP, Name, Damage Modifier, Loot Value, Loot Rolls)
-            encounters.add(new entity(true, 3000, "Battleship", 3, 3, 1));
-            encounters.add(new entity(true, 4000, "Frigate", 4, 4, 2));
-            encounters.add(new entity(true, 2000, "Gunship", 2, 2, 1));
+            encounters.add(new entity(true, 3000, "Battleship", 50, 3, 1));
+            encounters.add(new entity(true, 4000, "Frigate", 60, 4, 2));
+            encounters.add(new entity(true, 2000, "Gunship", 40, 2, 1));
 
             //Items cotr: (Item ID, Quantity, Name, Description, repair, damage)
             shipItems = new ArrayList<>();
@@ -103,7 +103,7 @@ public class SimpleSpaceTwo {
         System.exit(0);
     }
 
-    public void startGameFailEvent() {
+    public static void startGameFailEvent() {
         System.out.println("You have failed. GAME OVER");
         System.exit(0);
     }
