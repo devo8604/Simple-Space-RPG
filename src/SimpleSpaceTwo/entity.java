@@ -54,12 +54,10 @@ public class entity {
         System.out.println(name + " took " + damage + " damage!");
         HP -= damage;
         System.out.println(name + "'s health: " + HP);
-        if (HP <= 0) {
-            isAlive = false;
-            SimpleSpaceTwo.startGameFailEvent();
-        } else {
-            isAlive = true;
-        }
+        if (HP <= 0) isAlive = false;
+        else isAlive = true;
+    
+        
     }
 
     public void battle(entity target) {

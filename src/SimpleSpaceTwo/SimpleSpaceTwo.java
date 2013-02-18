@@ -26,7 +26,7 @@ public class SimpleSpaceTwo {
 
     SimpleSpaceTwo() {
         //Player Cotr: (isAlive, HP, Name, Damage Modifier)
-        player = new entity(true, 3000, "Planet Express", 50);
+        player = new entity(true, 3000, "Planet Express", 500);
         gameJumpCTR = 0;
         gameJumpMAX = 15;
         System.out.println("In a Galaxy far far far away in the distant future,\n"
@@ -72,7 +72,6 @@ public class SimpleSpaceTwo {
                 switch (menuItem) {
                     case 1:
                         gameJumpCTR++;
-                        System.out.println(encounters.get(gameJumpCTR).initSpam);
                         int encSize = encounters.size();
                         entity instanceEnc = encounters.get(gen.nextInt(encSize));
                         while (instanceEnc.isAlive) {
