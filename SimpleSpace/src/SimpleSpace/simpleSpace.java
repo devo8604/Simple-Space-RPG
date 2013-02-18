@@ -126,34 +126,7 @@ public class simpleSpace {
                                 encounters.get(gameJumpCTR).loot(player.inventory);
                             }
                             else startGameFailEvent();
-                            /*
-                            double battleChoice = ev.ranNum();
-
-                            if (battleChoice > 80) {
-                                eneFrigate fr = new eneFrigate();
-
-                                fr.battleStart();
-                                Thread.sleep(250);
-                                fr.battle();
-                                mnMenu();
-                            } else if (battleChoice > 40) {
-                                eneBattleship bs = new eneBattleship();
-
-                                bs.battleStart();
-                                Thread.sleep(250);
-                                bs.battle();
-                                mnMenu();
-                            } else {
-                                eneCruiser cr = new eneCruiser();
-
-                                cr.battleStart();
-                                Thread.sleep(250);
-                                cr.battle();
-                                mnMenu();
-                            }
-                            */
                         case 2:
-                            //item.inventory();
 
                             break;
 
@@ -201,6 +174,3 @@ public class simpleSpace {
 
 
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com
