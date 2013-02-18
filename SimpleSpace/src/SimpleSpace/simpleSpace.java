@@ -5,7 +5,10 @@ package SimpleSpace;
  * @version 0.01
  * @author Devon Smith
  */
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.*;
+import sun.misc.IOUtils;
 
 public class simpleSpace {
     
@@ -40,6 +43,8 @@ public class simpleSpace {
         possibleItems.add(new item(1, 100, "Rail Slug", "This is a rail-propelled unguided projectile. It has a med-high damage value.", 0., 150.));
         possibleItems.add(new item(2, 100, "Repair Kit", "This is a self-deploying repair kit. Each unit repairs 1HP of damage.", 1., 0.));
         player.inventory = possibleItems;
+        InputStream is =this.getClass().getClassLoader().getResourceAsStream("txt_test");
+        Scanner scan = new Scanner(is);
     }
     /*
      * show help function. just uses system.out.println but is used multiple times.
