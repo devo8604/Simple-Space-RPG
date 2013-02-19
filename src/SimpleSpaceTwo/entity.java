@@ -25,6 +25,19 @@ public class entity {
     double HPMax;
     
 
+    // Copy ctor
+    entity(entity a) {
+        this.isAlive = a.isAlive;
+        this.HP = a.HP;
+        this.dmgModifier = a.dmgModifier;
+        this.lootvalue = a.lootvalue;
+        this.lootrolls = a.lootrolls;
+        this.name = a.name;
+        this.initSpam = a.initSpam;
+        this.gen = a.gen;
+        this.inventory = a.inventory;
+        this.HPMax = a.HPMax;
+    }
     
     //NPC Method
     entity(boolean alive, double hitpoints, String entName, double dmgM, int lootv, int lootr) {
