@@ -4,6 +4,7 @@
  */
 package SimpleSpace;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -27,6 +28,26 @@ public class xmlio {
     
     public Document readXMLinJAR(String fname) throws ParserConfigurationException, SAXException, IOException {
         try (InputStream is = this.getClass().getClassLoader().getResourceAsStream(fname)){
+            if (is != null) {
+                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                dbf.setValidating(false);
+                dbf.setIgnoringComments(false);
+                dbf.setIgnoringElementContentWhitespace(true);
+                dbf.setNamespaceAware(true);
+                DocumentBuilder db = null;
+                db = dbf.newDocumentBuilder();
+                db.setEntityResolver(new NullResolver());
+                return db.parse(is);
+            }
+            else {
+                System.out.println("File read " + fname + " failed!");
+                System.exit(9);
+                return null;
+            }
+        }
+    }
+    public Document readXMLinFile(String fname) throws ParserConfigurationException, SAXException, IOException {
+        try (InputStream is = new FileInputStream(fname)){
             if (is != null) {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 dbf.setValidating(false);
