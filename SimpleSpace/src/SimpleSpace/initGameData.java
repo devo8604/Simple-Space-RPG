@@ -37,6 +37,7 @@ public class initGameData {
             setNPCs();
             setItems();
             setPlyrs();
+            setProgress();
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
@@ -53,6 +54,7 @@ public class initGameData {
             setNPCs();
             setItems();
             setPlyrs();
+            setProgress();
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
@@ -69,6 +71,7 @@ public class initGameData {
             setNPCs();
             setItems();
             setPlyrs();
+            setProgress();
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
@@ -82,6 +85,23 @@ public class initGameData {
         Document prologue = fileData.readXMLinJAR(campaignFname);
         NodeList nl = prologue.getDocumentElement().getElementsByTagName("mtext");
         prologueTXT = nl.item(0).getTextContent();
+    }
+    
+    public void setJumpMax() throws ParserConfigurationException, SAXException, IOException{
+        Document progress = fileData.readXMLinJAR(campaignFname);
+        NodeList nl = progress.getDocumentElement().getElementsByTagName("jumpMax");
+        jumpMax = Integer.parseInt(nl.item(0).getTextContent());
+    }
+    
+    public void setJumpCtr() throws ParserConfigurationException, SAXException, IOException{
+        Document progress = fileData.readXMLinJAR(campaignFname);
+        NodeList nl = progress.getDocumentElement().getElementsByTagName("jumpCtr");
+        jumpCtr = Integer.parseInt(nl.item(0).getTextContent());
+    }
+    
+    public void setProgress() throws ParserConfigurationException, SAXException, IOException {
+        setJumpMax();
+        setJumpCtr();
     }
     
     public String getPrologue() {
