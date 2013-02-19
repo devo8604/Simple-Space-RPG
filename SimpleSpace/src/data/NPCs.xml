@@ -9,7 +9,7 @@
         <lootvalue>400</lootvalue>
         <lootrolls>1</lootrolls>
         <name>Planet Express Ship</name>
-        <initSpam>(V)...(-,,,-)...(V)</initSpam>
+        <initSpam>Bite my shiny metal ass!!</initSpam>
     </NPC>
     <NPC>
         <isAlive>true</isAlive>
@@ -17,10 +17,34 @@
         <dmgModifier>100</dmgModifier>
         <lootvalue>400</lootvalue>
         <lootrolls>1</lootrolls>
-        <name>Epic Battle Cruiser</name>
-        <initSpam>/\/\/\/\/\
-----------
-\/\/\/\/\/</initSpam>
+        <name>Borg Cube</name>
+        <initSpam>Resistance is futile!</initSpam>
     </NPC>
-    
+    <NPC>
+        <isAlive>true</isAlive>
+        <HP>2000</HP>
+        <dmgModifier>150</dmgModifier>
+        <lootvalue>400</lootvalue>
+        <lootrolls>1</lootrolls>
+        <name>Heart of Gold</name>
+        <initSpam>Don't panic!</initSpam>
+    </NPC>
+    <NPC>
+        <isAlive>true</isAlive>
+        <HP>1500.</HP>
+        <dmgModifier>100</dmgModifier>
+        <lootvalue>400</lootvalue>
+        <lootrolls>1</lootrolls>
+        <name>Mega Maid</name>
+        <initSpam>Prepare for Metamorphosis!!</initSpam>
+    </NPC>
+    <NPC>
+        <isAlive>true</isAlive>
+        <HP>1500.</HP>
+        <dmgModifier>100</dmgModifier>
+        <lootvalue>400</lootvalue>
+        <lootrolls>1</lootrolls>
+        <name>Spaceballs 1</name>
+        <initSpam>What's the matter Colonel Sandurz? CHICKEN?</initSpam>
+    </NPC>
 </root>
