@@ -31,6 +31,7 @@ public class initGameData {
     
     initGameData() {
         campaignFname = "campaigns/default.xml";
+        internal = true;
         try {
             setPrologue();
             setNPCs();
