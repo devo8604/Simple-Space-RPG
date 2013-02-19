@@ -10,6 +10,8 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -30,14 +32,9 @@ public class initGameData {
 
     
     initGameData() {
-        campaignFname = "campaigns/default.xml";
-        internal = true;
+
         try {
-            setPrologue();
-            setNPCs();
-            setItems();
-            setPlyrs();
-            setProgress();
+            open();
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
@@ -46,40 +43,36 @@ public class initGameData {
             Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    initGameData(String sel) {
-        campaignFname = sel;
+    
+    public void open() throws ParserConfigurationException, SAXException, IOException {
+        campaignFname = "campaigns/default.xml";
         internal = true;
-        try {
-            setPrologue();
-            setNPCs();
-            setItems();
-            setPlyrs();
-            setProgress();
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SAXException ex) {
-            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }  
-    initGameData(String sel, boolean inter) {
-        campaignFname = sel;
+        setPrologue();
+        setNPCs();
+        setItems();
+        setPlyrs();
+        setProgress();
+    }
+    
+    public void open(String fname) throws ParserConfigurationException, SAXException, IOException {
+        campaignFname = fname;
+        internal = true;
+        setPrologue();
+        setNPCs();
+        setItems();
+        setPlyrs();
+        setProgress();
+    }
+    
+    public void open(String fname, boolean inter) throws ParserConfigurationException, SAXException, IOException {
+        campaignFname = fname;
         internal = inter;
-        try {
-            setPrologue();
-            setNPCs();
-            setItems();
-            setPlyrs();
-            setProgress();
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SAXException ex) {
-            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }    
+        setPrologue();
+        setNPCs();
+        setItems();
+        setPlyrs();
+        setProgress();
+    } 
     
     public void setPrologue() throws ParserConfigurationException, SAXException, IOException{
         Document prologue = fileData.readXMLinJAR(campaignFname);

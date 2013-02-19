@@ -128,7 +128,15 @@ public class simpleSpace {
                             break;
 
                         case 3:
-                            data.open();
+                            try {
+                                data.open();
+                            } catch (ParserConfigurationException ex) {
+                                Logger.getLogger(simpleSpace.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (SAXException ex) {
+                                Logger.getLogger(simpleSpace.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (IOException ex) {
+                                Logger.getLogger(simpleSpace.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                             break;
                         case 4: 
                             System.exit(0);
