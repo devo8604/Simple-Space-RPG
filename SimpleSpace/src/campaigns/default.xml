@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+    
+<!-- BEGIN PROLOGUE DEFINITION -->
+    <mtext>
+In a Galaxy far far far away in the distant future,
+you are the Captain of an alliance battleship, trapped deep
+within enemy territory with Intelligence information that could
+finally put an end to this war. In order to make it back to Alliance
+space, you must successfully make many FTL jumps. Your navigational computer will display how many times
+that the enemy has the oppurtunity to stop you, and turn the tide
+of the war in their favor...
+    </mtext>   
+<!-- END PROLOGUE DEFINITION -->
+
+
+<!-- BEGIN NPC DEFINITIONS -->
+    <NPC>
+        <isAlive>true</isAlive>
+        <HP>1500.</HP>
+        <dmgModifier>100</dmgModifier>
+        <lootvalue>400</lootvalue>
+        <lootrolls>1</lootrolls>
+        <name>Planet Express Ship</name>
+        <initSpam>Bite my shiny metal ass!!</initSpam>
+    </NPC>
+    <NPC>
+        <isAlive>true</isAlive>
+        <HP>1500.</HP>
+        <dmgModifier>100</dmgModifier>
+        <lootvalue>400</lootvalue>
+        <lootrolls>1</lootrolls>
+        <name>Borg Cube</name>
+        <initSpam>Resistance is futile!</initSpam>
+    </NPC>
+    <NPC>
+        <isAlive>true</isAlive>
+        <HP>2000</HP>
+        <dmgModifier>150</dmgModifier>
+        <lootvalue>400</lootvalue>
+        <lootrolls>1</lootrolls>
+        <name>Heart of Gold</name>
+        <initSpam>Don't panic!</initSpam>
+    </NPC>
+    <NPC>
+        <isAlive>true</isAlive>
+        <HP>1500.</HP>
+        <dmgModifier>100</dmgModifier>
+        <lootvalue>400</lootvalue>
+        <lootrolls>1</lootrolls>
+        <name>Mega Maid</name>
+        <initSpam>Prepare for Metamorphosis!!</initSpam>
+    </NPC>
+    <NPC>
+        <isAlive>true</isAlive>
+        <HP>1500.</HP>
+        <dmgModifier>100</dmgModifier>
+        <lootvalue>400</lootvalue>
+        <lootrolls>1</lootrolls>
+        <name>Spaceballs 1</name>
+        <initSpam>What's the matter Colonel Sandurz? CHICKEN?</initSpam>
+    </NPC>
+<!-- END NPC DEFINITIONS -->
+
+<!-- BEGIN ITEM DEFINITIONS -->
+    <item>
+        <itemID>0</itemID>
+        <qty>100</qty>
+        <title>Missile</title>
+        <desc>This is a self-propelled seeking projectile. It has a high damage value.</desc>
+        <repairValue>0</repairValue>
+        <dmgValue>300</dmgValue>
+    </item>
+    <item>
+        <itemID>1</itemID>
+        <qty>100</qty>
+        <title>Rail Slug</title>
+        <desc>This is a rail-propelled unguided projectile. It has a med-high damage value.</desc>
+        <repairValue>0</repairValue>
+        <dmgValue>150</dmgValue>
+    </item>    <item>
+        <itemID>2</itemID>
+        <qty>100</qty>
+        <title>Repair Kit</title>
+        <desc>This is a self-deploying repair kit. Each unit repairs 50HP of damage.</desc>
+        <repairValue>50</repairValue>
+        <dmgValue>0</dmgValue>
+    </item>
+<!-- END ITEM DEFINITIONS -->
+
+<!-- BEGIN PLAYER DEFINITIONS -->
+    <player>
+        <isAlive>true</isAlive>
+        <HP>4000</HP>
+        <HPMax>4000</HPMax>
+        <dmgModifier>400</dmgModifier>
+        <lootvalue>0</lootvalue>
+        <lootrolls>0</lootrolls>
+        <name>Player1</name>
+        <initSpam></initSpam>
+    </player>
+<!-- END PLAYER DEFINITIONS -->
+</root>
