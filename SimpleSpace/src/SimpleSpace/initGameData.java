@@ -42,15 +42,6 @@ public class initGameData {
         } catch (IOException ex) {
             Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try {
-            fileData.saveToXML(this, "beefcake.xml");
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (TransformerConfigurationException ex) {
-            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (TransformerException ex) {
-            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     public void open() throws ParserConfigurationException, SAXException, IOException {
