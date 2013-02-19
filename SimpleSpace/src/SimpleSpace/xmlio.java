@@ -4,22 +4,21 @@
  */
 package SimpleSpace;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.zip.GZIPInputStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import java.io.PushbackInputStream;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 /**
  *
@@ -59,6 +58,7 @@ public class xmlio {
             }
         }
     }
+    
     public Document readXMLinFile(String fname) throws ParserConfigurationException, SAXException, IOException {
         try (InputStream is = new FileInputStream(fname)){
             if (is != null) {
@@ -80,6 +80,40 @@ public class xmlio {
         }
     }
 
+    public void saveToXML(initGameData a, String fname) throws ParserConfigurationException, TransformerConfigurationException, TransformerException{
+        Document save;
+        Element e = null;
+        
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            save = db.newDocument();
+            
+            Element rootElem = save.createElement("root");
+            
+            e = save.createElement("mtext");
+            e.appendChild(save.createTextNode(a.prologueTXT));
+            rootElem.appendChild(e);
+            
+            save.appendChild(rootElem);
+            
+        try {
+            Transformer tr = TransformerFactory.newInstance().newTransformer();
+            tr.setOutputProperty(OutputKeys.INDENT, "yes");
+            tr.setOutputProperty(OutputKeys.METHOD, "xml");
+            tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, "roles.dtd");
+            tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+
+            // send DOM to file
+            tr.transform(new DOMSource(save), 
+                                 new StreamResult(new FileOutputStream(fname)));
+
+        } catch (TransformerException te) {
+            System.out.println(te.getMessage());
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
+        }            
+    }
     
 }
 
