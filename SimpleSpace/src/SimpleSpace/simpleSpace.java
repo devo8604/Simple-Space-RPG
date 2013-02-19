@@ -100,12 +100,13 @@ public class simpleSpace {
     public void startGameEvent(Scanner in) throws InterruptedException {
         while (data.plyrs.get(0).isAlive) {
             if (data.plyrs.get(0).isAlive) {
-                    System.out.println("|----------------|");
-                    System.out.println("|  Select one:   |");
-                    System.out.println("|  1. Jump.      |");
-                    System.out.println("|  2. Inventory  |");
-                    System.out.println("|  3. Quit.      |");
-                    System.out.println("|----------------|");
+                    System.out.println("|--------------------|");
+                    System.out.println("|  Select one:       |");
+                    System.out.println("|  1. Jump           |");
+                    System.out.println("|  2. Inventory      |");
+                    System.out.println("|  3. Load Campaign  |");
+                    System.out.println("|  4. Quit           |");
+                    System.out.println("|--------------------|");
 
                     int menuItem = in.nextInt();
 
@@ -127,9 +128,17 @@ public class simpleSpace {
                             break;
 
                         case 3:
-                            System.exit(0);
-
+                            data.open();
                             break;
+                        case 4: 
+                            System.exit(0);
+                            break;
+                        default: 
+                            System.out.println("Self Desctruct Activated.");
+                            for(int i = 5; i > 0; --i){ 
+                            System.out.println("Self destruct in " + i + " seconds.");
+                            Thread.sleep(1000);}
+                            System.exit(0);
                     }
             }
             else {
