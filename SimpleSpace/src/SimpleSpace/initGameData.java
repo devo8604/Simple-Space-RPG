@@ -20,15 +20,17 @@ import org.xml.sax.SAXException;
  */
 public class initGameData {
     public xmlio fileData = new xmlio();
-    public String prologueTXT;
+    public String prologueTXT, campaignFname;
     public ArrayList<entity> npcs = new ArrayList();
     public ArrayList<item> possibleItems = new ArrayList();
     public ArrayList<entity> plyrs = new ArrayList();
     public Random gen = new Random();
     public int jumpMax, jumpCtr;
+    public boolean internal;
 
     
     initGameData() {
+        campaignFname = "campaigns/default.xml";
         try {
             setPrologue();
             setNPCs();
@@ -42,9 +44,41 @@ public class initGameData {
             Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    initGameData(String sel) {
+        campaignFname = sel;
+        internal = true;
+        try {
+            setPrologue();
+            setNPCs();
+            setItems();
+            setPlyrs();
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SAXException ex) {
+            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }  
+    initGameData(String sel, boolean inter) {
+        campaignFname = sel;
+        internal = inter;
+        try {
+            setPrologue();
+            setNPCs();
+            setItems();
+            setPlyrs();
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SAXException ex) {
+            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(initGameData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
     
     public void setPrologue() throws ParserConfigurationException, SAXException, IOException{
-        Document prologue = fileData.readXMLinJAR("data/prologue.xml");
+        Document prologue = fileData.readXMLinJAR(campaignFname);
         NodeList nl = prologue.getDocumentElement().getElementsByTagName("mtext");
         prologueTXT = nl.item(0).getTextContent();
     }
@@ -54,7 +88,9 @@ public class initGameData {
     }
     
     public void setNPCs() throws ParserConfigurationException, SAXException, IOException {
-        Document NPCDATA = fileData.readXMLinJAR("data/NPCs.xml");
+        Document NPCDATA;
+        if (internal) NPCDATA = fileData.readXMLinJAR(campaignFname);
+        else NPCDATA = fileData.readXMLinFile(campaignFname);
         NodeList nl = NPCDATA.getDocumentElement().getElementsByTagName("NPC");
         for(int ctr = 0;ctr < nl.getLength(); ctr++) {
             npcs.add(new entity());
@@ -105,7 +141,9 @@ public class initGameData {
     }
     
     public void setItems() throws ParserConfigurationException, SAXException, IOException {
-        Document itemlist = fileData.readXMLinJAR("data/items.xml");
+        Document itemlist = null;
+        if(internal) itemlist = fileData.readXMLinJAR(campaignFname);
+        else itemlist = fileData.readXMLinFile(campaignFname);
         NodeList nl = itemlist.getDocumentElement().getElementsByTagName("item");
         for(int ctr = 0;ctr < nl.getLength(); ctr++) {
             possibleItems.add(new item());
@@ -147,7 +185,9 @@ public class initGameData {
     }
     
     public void setPlyrs() throws ParserConfigurationException, SAXException, IOException {
-        Document PLYRDATA = fileData.readXMLinJAR("data/players.xml");
+        Document PLYRDATA = null;
+        if(internal) PLYRDATA = fileData.readXMLinJAR(campaignFname);
+        else PLYRDATA = fileData.readXMLinFile(campaignFname);
         NodeList nl = PLYRDATA.getDocumentElement().getElementsByTagName("player");
         for(int ctr = 0;ctr < nl.getLength(); ctr++) {
             plyrs.add(new entity());
