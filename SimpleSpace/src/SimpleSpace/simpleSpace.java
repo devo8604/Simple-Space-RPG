@@ -123,13 +123,21 @@ public class simpleSpace {
                             }
                             else startGameFailEvent();
                         case 2:
-
+                                    
                             break;
 
                         case 3:
-                            System.exit(0);
-
+                            data.open();
                             break;
+                        case 4: 
+                            System.exit(0);
+                            break;
+                        default: 
+                            System.out.println("Self Desctruct Activated.");
+                            for(int i = 5; i > 0; --i){ 
+                            System.out.println("Self destruct in " + i + " seconds.");
+                            Thread.sleep(1000);}
+                            System.exit(0);
                     }
             }
             else {
