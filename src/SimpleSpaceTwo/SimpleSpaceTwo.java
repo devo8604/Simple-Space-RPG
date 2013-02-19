@@ -26,7 +26,7 @@ public class SimpleSpaceTwo {
 
     SimpleSpaceTwo() {
         //Player Cotr: (isAlive, HP, Name, Damage Modifier)
-        player = new entity(true, 3000, "Planet Express", 500);
+        player = new entity(true, 3000, "Planet Express", 999999);
         gameJumpCTR = 0;
         gameJumpMAX = 15;
         System.out.println("In a Galaxy far far far away in the distant future,\n"
@@ -37,12 +37,12 @@ public class SimpleSpaceTwo {
                 + gameJumpMAX + " times\n"
                 + "that the enemy has the oppurtunity to stop you, and turn the tide\n"
                 + "of the war in their favor...");
-        
+
         for (int i = 0; i < gameJumpMAX; i++) {
 
             //NPC cotr: (isAlive, HP, Name, Damage Modifier, Loot Value, Loot Rolls)
             encounters = new ArrayList();
-             
+
             encounters.add(new entity(true, 3000, "Battleship", 50, 3, 1));
             encounters.add(new entity(true, 4000, "Frigate", 60, 4, 2));
             encounters.add(new entity(true, 2000, "Gunship", 40, 2, 1));
@@ -114,7 +114,7 @@ public class SimpleSpaceTwo {
 
     public void mnMenu() throws InterruptedException {
         Scanner in = new Scanner(System.in);
-               
+
         for (; gameJumpCTR < gameJumpMAX; gameJumpCTR++) {
             startGameEvent(in);
         }

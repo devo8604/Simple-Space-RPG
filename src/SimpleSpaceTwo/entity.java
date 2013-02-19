@@ -19,12 +19,20 @@ public class entity {
     public boolean isAlive;
     public double HP, dmgModifier;
     public int lootvalue, lootrolls;
-    public String name, initSpam;
+    public String name;
     public Random gen = new Random();
     public static ArrayList<item> inventory;
     double HPMax;
     
 
+    entity() {
+        isAlive = true;
+        HP = 1;
+        name = "defualt";
+        dmgModifier = 1;
+        lootvalue = 1;
+        lootrolls = 1;
+    }
     
     //NPC Method
     entity(boolean alive, double hitpoints, String entName, double dmgM, int lootv, int lootr) {
