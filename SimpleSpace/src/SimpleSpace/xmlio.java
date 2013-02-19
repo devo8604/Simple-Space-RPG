@@ -94,6 +94,127 @@ public class xmlio {
             e.appendChild(save.createTextNode(a.prologueTXT));
             rootElem.appendChild(e);
             
+            e = save.createElement("jumpMax");
+            e.appendChild(save.createTextNode(String.valueOf(a.jumpMax)));
+            rootElem.appendChild(e);
+            
+            e = save.createElement("jumpCtr");
+            e.appendChild(save.createTextNode(String.valueOf(a.jumpCtr)));
+            rootElem.appendChild(e);
+            
+            for(int i = 0; i < a.npcs.size(); i++){
+                e = save.createElement("NPC");
+
+                Element e_isAlive = null;
+                Element e_HP = null;
+                Element e_dmgModifier = null;
+                Element e_lootvalue = null;
+                Element e_lootrolls = null;
+                Element e_initSpam = null;
+
+                e_isAlive = save.createElement("isAlive");
+                if (a.npcs.get(i).isAlive) e_isAlive.appendChild(save.createTextNode("true"));
+                else e_isAlive.appendChild(save.createTextNode("false"));
+                e.appendChild(e_isAlive);
+                
+                e_HP = save.createElement("HP");
+                e_HP.appendChild(save.createTextNode(String.valueOf(a.npcs.get(i).HP)));
+                e.appendChild(e_HP);
+                
+                e_dmgModifier = save.createElement("dmgModifier");
+                e_dmgModifier.appendChild(save.createTextNode(String.valueOf(a.npcs.get(i).dmgModifier)));
+                e.appendChild(e_dmgModifier);
+                
+                e_lootvalue = save.createElement("lootvalue");
+                e_lootvalue.appendChild(save.createTextNode(String.valueOf(a.npcs.get(i).lootvalue)));
+                e.appendChild(e_lootvalue);
+                
+                e_lootrolls = save.createElement("lootrolls");
+                e_lootrolls.appendChild(save.createTextNode(String.valueOf(a.npcs.get(i).lootrolls)));
+                e.appendChild(e_lootrolls);
+                
+                e_initSpam = save.createElement("initSpam");
+                e_initSpam.appendChild(save.createTextNode(a.npcs.get(i).initSpam));
+                e.appendChild(e_initSpam);
+                
+                rootElem.appendChild(e);
+            }
+            
+            for(int i = 0; i < a.possibleItems.size(); i++){
+                e = save.createElement("item");
+
+                Element e_itemID = null;
+                Element e_qty = null;
+                Element e_title = null;
+                Element e_desc = null;
+                Element e_repairValue = null;
+                Element e_dmgValue = null;
+
+                e_itemID = save.createElement("itemID");
+                e_itemID.appendChild(save.createTextNode(String.valueOf(a.possibleItems.get(i).itemID)));
+                e.appendChild(e_itemID);
+                
+                e_qty = save.createElement("qty");
+                e_qty.appendChild(save.createTextNode(String.valueOf(a.possibleItems.get(i).qty)));
+                e.appendChild(e_qty);
+                
+                e_title = save.createElement("title");
+                e_title.appendChild(save.createTextNode(a.possibleItems.get(i).title));
+                e.appendChild(e_title);
+                
+                e_desc = save.createElement("desc");
+                e_desc.appendChild(save.createTextNode(a.possibleItems.get(i).desc));
+                e.appendChild(e_desc);
+                
+                e_repairValue = save.createElement("repairValue");
+                e_repairValue.appendChild(save.createTextNode(String.valueOf(a.possibleItems.get(i).repairValue)));
+                e.appendChild(e_repairValue);
+                
+                e_dmgValue = save.createElement("dmgValue");
+                e_dmgValue.appendChild(save.createTextNode(String.valueOf(a.possibleItems.get(i).dmgValue)));
+                e.appendChild(e_dmgValue);
+                
+                rootElem.appendChild(e);
+            }
+
+            for(int i = 0; i < a.plyrs.size(); i++){
+                e = save.createElement("player");
+
+                Element e_isAlive = null;
+                Element e_HP = null;
+                Element e_dmgModifier = null;
+                Element e_lootvalue = null;
+                Element e_lootrolls = null;
+                Element e_initSpam = null;
+
+                e_isAlive = save.createElement("isAlive");
+                if (a.plyrs.get(i).isAlive) e_isAlive.appendChild(save.createTextNode("true"));
+                else e_isAlive.appendChild(save.createTextNode("false"));
+                e.appendChild(e_isAlive);
+                
+                e_HP = save.createElement("HP");
+                e_HP.appendChild(save.createTextNode(String.valueOf(a.plyrs.get(i).HP)));
+                e.appendChild(e_HP);
+                
+                e_dmgModifier = save.createElement("dmgModifier");
+                e_dmgModifier.appendChild(save.createTextNode(String.valueOf(a.plyrs.get(i).dmgModifier)));
+                e.appendChild(e_dmgModifier);
+                
+                e_lootvalue = save.createElement("lootvalue");
+                e_lootvalue.appendChild(save.createTextNode(String.valueOf(a.plyrs.get(i).lootvalue)));
+                e.appendChild(e_lootvalue);
+                
+                e_lootrolls = save.createElement("lootrolls");
+                e_lootrolls.appendChild(save.createTextNode(String.valueOf(a.plyrs.get(i).lootrolls)));
+                e.appendChild(e_lootrolls);
+                
+                e_initSpam = save.createElement("initSpam");
+                e_initSpam.appendChild(save.createTextNode(a.plyrs.get(i).initSpam));
+                e.appendChild(e_initSpam);
+                
+                rootElem.appendChild(e);
+            }            
+             
             save.appendChild(rootElem);
             
         try {
@@ -101,8 +222,6 @@ public class xmlio {
             tr.setOutputProperty(OutputKeys.INDENT, "yes");
             tr.setOutputProperty(OutputKeys.METHOD, "xml");
             tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-            tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, "roles.dtd");
-            tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
             // send DOM to file
             tr.transform(new DOMSource(save), 
