@@ -14,6 +14,11 @@ of the war in their favor...
     </mtext>   
 <!-- END PROLOGUE DEFINITION -->
 
+<!-- BEGIN PROGRESS DEFINITION -->
+    <jumpMax>15</jumpMax>
+    <jumpCtr>0</jumpCtr>
+<!-- END PROGRESS DEFINITION -->
+
 
 <!-- BEGIN NPC DEFINITIONS -->
     <NPC>
