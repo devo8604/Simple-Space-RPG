@@ -61,7 +61,10 @@ public class initGameData {
             for(int i = 0; i < nl.item(ctr).getChildNodes().getLength(); i++) {
                 if(nl.item(ctr).getChildNodes().item(i).getLocalName() != null) {
                     if(nl.item(ctr).getChildNodes().item(i).getLocalName().equals("isAlive")) {
-                        npcs.get(ctr).isAlive = true;
+                        if(nl.item(ctr).getChildNodes().item(i).getTextContent().contains("t"))
+                            npcs.get(ctr).isAlive = true;
+                        else
+                            npcs.get(ctr).isAlive = false;
                         System.out.println("Found isAlive value! Setting NPC's isAlive value to: " +
                                 npcs.get(ctr).isAlive);
                     }
