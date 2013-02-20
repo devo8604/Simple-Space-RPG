@@ -21,7 +21,7 @@ public class inventory {
         
         System.out.println("|--------------------|");
         System.out.println("|  Select one:       |");
-        System.out.println("|  1. Jump           |");
+        System.out.println("|  1. List inventory |");
         System.out.println("|  2. **reserved**   |");
         System.out.println("|  3. **reserved**   |");
         System.out.println("|  4. Main Menu      |");
