@@ -48,9 +48,10 @@ public class inventory {
 
     public String listInv() {
         for (int i = 0; i <= possibleItems.size(); i++) {
-            describeItem = possibleItems.get(i).title + " " + possibleItems.get(i).desc
-                    + " " + possibleItems.get(i).qty + " " + possibleItems.get(i).repairValue
-                    + " " + possibleItems.get(i).dmgValue;
+            describeItem = "Item: " + possibleItems.get(i).title + " desc: " 
+                    + possibleItems.get(i).desc + " qty: " + possibleItems.get(i).qty 
+                    + " Repair Val: " + possibleItems.get(i).repairValue
+                    + " Damage Val " + possibleItems.get(i).dmgValue;
             return describeItem;
         }
         return null;
