@@ -29,13 +29,13 @@ public class inventory {
         int menuItem = in.nextInt();
         switch (menuItem) {
             case 1:
-                listInv();  //lists player inventory
+                System.out.println(listInv());  //lists player inventory
                 break;
             case 2:
                 //future use
                 break;
             case 3:
-            //future use
+                //future use
             case 4:
                 simple.startGameEvent(in);
                 break;
