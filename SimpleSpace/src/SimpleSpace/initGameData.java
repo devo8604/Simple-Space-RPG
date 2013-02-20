@@ -4,8 +4,13 @@
  */
 package SimpleSpace;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +34,8 @@ public class initGameData {
     public Random gen = new Random();
     public int jumpMax, jumpCtr;
     public boolean internal;
+    public FileWriter log_writer;
+    public BufferedWriter logger;
 
     
     initGameData() {
@@ -52,6 +59,7 @@ public class initGameData {
         setItems();
         setPlyrs();
         setProgress();
+        setLogger();
     }
     
     public void open(String fname) throws ParserConfigurationException, SAXException, IOException {
@@ -62,6 +70,7 @@ public class initGameData {
         setItems();
         setPlyrs();
         setProgress();
+        setLogger();
     }
     
     public void open(String fname, boolean inter) throws ParserConfigurationException, SAXException, IOException {
@@ -253,5 +262,11 @@ public class initGameData {
         }        
     }
     
+    public void setLogger() throws IOException {
+        DateFormat currdate = new SimpleDateFormat("dd-mm-yyyy");
+        String fname = currdate.format(new Date());
+        log_writer = new FileWriter(fname + "rpg-log.txt");
+        logger = new BufferedWriter(log_writer);
+    }
 
 }
