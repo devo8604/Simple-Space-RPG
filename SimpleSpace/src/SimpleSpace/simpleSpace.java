@@ -25,9 +25,12 @@ public class simpleSpace {
      * Class variable declarations
      */
     public ArrayList<entity> encounters;
-    public initGameData data = new initGameData();
+    public initGameData data;
+    public inventory inv;
 
     simpleSpace() throws ParserConfigurationException, SAXException, IOException {
+        data = new initGameData();
+        inv = new inventory(data);
         data.jumpCtr = 0;
         data.jumpMax = 15;
         encounters = new ArrayList();
@@ -35,6 +38,7 @@ public class simpleSpace {
             encounters.add(new entity(data.npcs.get(data.gen.nextInt(data.npcs.size()))));
         }
         System.out.println(data.getPrologue());
+        inv = new inventory(data);
     }
     /*
      * show help function. just uses system.out.println but is used multiple times.
@@ -129,7 +133,6 @@ public class simpleSpace {
                         }
                         break;
                     case 2:
-                        inventory inv = new inventory();
                         inv.inventoryMenu(in);
                         break;
 
