@@ -1,8 +1,6 @@
 
 package SimpleSpace;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Devon Smith

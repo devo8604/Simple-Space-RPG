@@ -17,7 +17,9 @@ public class GameData extends initGameData {
     }
 
     public void inventoryMenu(Scanner in) throws ParserConfigurationException, SAXException, IOException, InterruptedException {
-
+ 
+        simpleSpace simple = new simpleSpace();
+        
         System.out.println("|--------------------|");
         System.out.println("|  Select one:       |");
         System.out.println("|  1. List inventory |");
@@ -26,8 +28,8 @@ public class GameData extends initGameData {
         System.out.println("|  4. Main Menu      |");
         System.out.println("|--------------------|");
 
-        boolean running = true;
-        while(running) {
+        //boolean running = true;
+        //while(running) {
             int menuItem = in.nextInt();
             switch (menuItem) {
                 case 1:
@@ -39,13 +41,14 @@ public class GameData extends initGameData {
                 case 3:
                     //future use
                 case 4:
-                    running = false;
+                    //running = false;
+                    simple.startGameEvent(in);
                     break;
                 default:
                     System.out.println("Please try again.");
                     break;
             }
-        }
+        //}
 
     }
     
