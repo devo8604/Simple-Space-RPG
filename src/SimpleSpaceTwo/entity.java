@@ -25,13 +25,15 @@ public class entity {
     double HPMax;
     
 
+    // Copy ctor
     entity(entity a) {
         this.isAlive = a.isAlive;
         this.HP = a.HP;
-        this.name = a.name;
         this.dmgModifier = a.dmgModifier;
         this.lootvalue = a.lootvalue;
         this.lootrolls = a.lootrolls;
+        this.name = a.name;
+       
     }
     
     //NPC Method
