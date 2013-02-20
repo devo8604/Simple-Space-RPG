@@ -11,14 +11,13 @@ import org.xml.sax.SAXException;
  * @author Devon Smith
  */
 public class inventory {
-    
- 
+
     public ArrayList<item> possibleItems;
     String describeItem;
 
     public void inventoryMenu(Scanner in) throws ParserConfigurationException, SAXException, IOException, InterruptedException {
         simpleSpace simple = new simpleSpace();
-        
+
         System.out.println("|--------------------|");
         System.out.println("|  Select one:       |");
         System.out.println("|  1. List inventory |");
@@ -26,21 +25,25 @@ public class inventory {
         System.out.println("|  3. **reserved**   |");
         System.out.println("|  4. Main Menu      |");
         System.out.println("|--------------------|");
-        
+
         int menuItem = in.nextInt();
-        switch(menuItem) {
+        switch (menuItem) {
             case 1:
                 listInv();  //lists player inventory
-              break;
+                break;
             case 2:
                 //future use
-              break;
+                break;
             case 3:
-                //future use
+            //future use
             case 4:
                 simple.startGameEvent(in);
+                break;
+            default:
+                System.out.println("Please try again.");
+                break;
         }
-        
+
     }
 
     public String listInv() {
@@ -51,6 +54,5 @@ public class inventory {
             return describeItem;
         }
         return null;
-
     }
 }
