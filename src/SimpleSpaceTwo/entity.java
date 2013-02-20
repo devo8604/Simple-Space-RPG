@@ -25,13 +25,13 @@ public class entity {
     double HPMax;
     
 
-    entity() {
-        isAlive = true;
-        HP = 1;
-        name = "defualt";
-        dmgModifier = 1;
-        lootvalue = 1;
-        lootrolls = 1;
+    entity(entity a) {
+        this.isAlive = a.isAlive;
+        this.HP = a.HP;
+        this.name = a.name;
+        this.dmgModifier = a.dmgModifier;
+        this.lootvalue = a.lootvalue;
+        this.lootrolls = a.lootrolls;
     }
     
     //NPC Method
