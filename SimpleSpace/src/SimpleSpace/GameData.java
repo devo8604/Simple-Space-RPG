@@ -16,9 +16,7 @@ public class GameData extends initGameData {
     }
 
     public void inventoryMenu() throws ParserConfigurationException, SAXException, IOException, InterruptedException {
- 
-        simpleSpace simple = new simpleSpace();
-        
+         
         System.out.println("|--------------------|");
         System.out.println("|  Select one:       |");
         System.out.println("|  1. List inventory |");
@@ -40,8 +38,6 @@ public class GameData extends initGameData {
                 case 3:
                     //future use
                 case 4:
-                    //running = false;
-                    simple.startGameEvent();
                     break;
                 default:
                     System.out.println("Please try again.");
