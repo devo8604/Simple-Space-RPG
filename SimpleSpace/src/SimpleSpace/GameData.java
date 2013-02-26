@@ -2,7 +2,6 @@
 package SimpleSpace;
 
 import java.io.IOException;
-import java.util.Scanner;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
@@ -16,7 +15,7 @@ public class GameData extends initGameData {
         super();
     }
 
-    public void inventoryMenu(Scanner in) throws ParserConfigurationException, SAXException, IOException, InterruptedException {
+    public void inventoryMenu() throws ParserConfigurationException, SAXException, IOException, InterruptedException {
  
         simpleSpace simple = new simpleSpace();
         
@@ -30,7 +29,7 @@ public class GameData extends initGameData {
 
         //boolean running = true;
         //while(running) {
-            int menuItem = in.nextInt();
+            int menuItem = input.nextInt();
             switch (menuItem) {
                 case 1:
                     System.out.println(listInv());  //lists player inventory
@@ -42,7 +41,7 @@ public class GameData extends initGameData {
                     //future use
                 case 4:
                     //running = false;
-                    simple.startGameEvent(in);
+                    simple.startGameEvent();
                     break;
                 default:
                     System.out.println("Please try again.");
@@ -63,13 +62,12 @@ public class GameData extends initGameData {
         return describeItem;
     } 
     public void repair() {
-        Scanner in = new Scanner(System.in);
         initGameData data = new initGameData();
         System.out.println("\nYour current HP is at " + data.plyrs.get(0).HP);
         System.out.println("You have " + data.possibleItems.get(2).qty + " Repair Drones.\n" 
                 + "and each have a repair value of " + data.possibleItems.get(2).repairValue + " HP."
                 + "\nHow many do you want to use?");
-        int menuItem = in.nextInt();
+        int menuItem = input.nextInt();
         if (data.possibleItems.get(2).qty >= menuItem) {
             data.plyrs.get(0).HP += (data.possibleItems.get(2).repairValue * menuItem);
             System.out.println("You have " + data.plyrs.get(0).HP + " HP");
