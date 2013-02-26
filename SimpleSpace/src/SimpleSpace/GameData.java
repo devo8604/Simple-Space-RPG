@@ -71,4 +71,27 @@ public class GameData extends initGameData {
             System.out.println("You do not have enough drones!");
         }
     }
+    
+    public boolean battle(entity source, entity target) {
+        while (source.isAlive && target.isAlive) {
+            source.takeDamage(target.dealDamage());
+            selectItem().use(target);
+        }
+        if (source.isAlive) {
+            System.out.println("Success! You vanquished " + target.name + "! \n And now for the loot!");
+            source.loot(target);            
+            return true;
+        }
+        else return false;
+    }
+    
+    public item selectItem(){
+        System.out.println("Choose item:");
+        for (int i=0; i < plyrs.get(0).inventory.size(); i++) {
+            if(plyrs.get(0).inventory.get(i).qty > 0)
+                System.out.println(i + ": " + plyrs.get(0).inventory.get(i).title + " " + plyrs.get(0).inventory.get(i).desc);           
+        }
+        
+        return new item();
+    }
 }

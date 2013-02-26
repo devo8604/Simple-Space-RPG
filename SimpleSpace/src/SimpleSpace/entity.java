@@ -92,18 +92,6 @@ public class entity {
         else isAlive = true;
     }
     
-    public boolean battle(entity target) {
-        while (isAlive && target.isAlive) {
-            takeDamage(target.dealDamage());
-        }
-        if (isAlive) {
-            System.out.println("Success! You vanquished " + target.name + "! \n And now for the loot!");
-            loot(target);            
-            return true;
-        }
-        else return false;
-    }
-    
     public void loot(entity target) {
         int choice = gen.nextInt(inventory.size());
         for(;target.lootrolls > 0; target.lootrolls--) {

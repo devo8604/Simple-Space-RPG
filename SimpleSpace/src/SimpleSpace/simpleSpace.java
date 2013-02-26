@@ -108,8 +108,7 @@ public class simpleSpace {
                     case 1:
                         data.jumpCtr++;
                         System.out.println(encounters.get(data.jumpCtr).initSpam);
-                        data.plyrs.get(0).battle(encounters.get(data.jumpCtr));
-                        if (!data.plyrs.get(0).battle(encounters.get(data.jumpCtr))) 
+                        if (data.battle(data.plyrs.get(0), encounters.get(data.jumpCtr))) 
                             startGameFailEvent();
                         break;
                     case 2:
