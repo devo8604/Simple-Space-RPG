@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
@@ -34,6 +35,7 @@ public class initGameData {
     public boolean internal;
     public FileWriter log_writer;
     public BufferedWriter logger;
+    public Scanner input = new Scanner(System.in);
 
     
     initGameData() {
