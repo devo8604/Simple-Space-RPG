@@ -91,7 +91,6 @@ public class GameData extends initGameData {
             if(plyrs.get(0).inventory.get(i).qty > 0)
                 System.out.println(i + ": " + plyrs.get(0).inventory.get(i).title + " " + plyrs.get(0).inventory.get(i).desc);           
         }
-        
-        return new item();
+        return plyrs.get(0).inventory.get(input.nextInt());
     }
 }
