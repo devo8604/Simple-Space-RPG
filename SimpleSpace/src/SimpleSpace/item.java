@@ -39,5 +39,14 @@ public class item {
         if (qty <= 0) return true;
         else return false;
     }
+    
+    public void use(entity target) {
+        target.HP -= dmgValue;
+        if (target.HP + repairValue <= target.HPMax) {
+            target.HP += repairValue;
+        } else {
+            target.HP = target.HPMax;
+        }
+    }
 
 }
