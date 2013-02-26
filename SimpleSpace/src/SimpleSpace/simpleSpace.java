@@ -91,7 +91,7 @@ public class simpleSpace {
         }
     }
 
-    public void startGameEvent(Scanner in) throws InterruptedException, ParserConfigurationException, SAXException, IOException {
+    public void startGameEvent() throws InterruptedException, ParserConfigurationException, SAXException, IOException {
         while (data.plyrs.get(0).isAlive) {
             if (data.plyrs.get(0).isAlive) {
                 System.out.println("|--------------------|");
@@ -102,7 +102,7 @@ public class simpleSpace {
                 System.out.println("|  4. Quit           |");
                 System.out.println("|--------------------|");
 
-                int menuItem = in.nextInt();
+                int menuItem = data.input.nextInt();
 
                 switch (menuItem) {
                     case 1:
@@ -120,7 +120,7 @@ public class simpleSpace {
                         }
                         break;
                     case 2:
-                        data.inventoryMenu(in);
+                        data.inventoryMenu();
                         break;
 
                     case 3:
@@ -161,9 +161,8 @@ public class simpleSpace {
     }
 
     public void mnMenu() throws InterruptedException, ParserConfigurationException, SAXException, SAXException, IOException {
-        Scanner in = new Scanner(System.in);
         for (; data.jumpCtr < data.jumpMax; data.jumpCtr++) {
-            startGameEvent(in);
+            startGameEvent();
         }
         if (data.plyrs.get(0).isAlive) {
             startGameSuccessEvent();
