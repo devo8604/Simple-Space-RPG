@@ -41,11 +41,14 @@ public class item {
     }
     
     public void use(entity target) {
-        target.HP -= dmgValue;
-        if (target.HP + repairValue <= target.HPMax) {
-            target.HP += repairValue;
-        } else {
-            target.HP = target.HPMax;
+        if (qty > 0) {
+            target.HP -= dmgValue;
+            if (target.HP + repairValue <= target.HPMax) {
+                target.HP += repairValue;
+            } else {
+                target.HP = target.HPMax;
+            }
+            qty--;
         }
     }
 
