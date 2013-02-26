@@ -76,7 +76,8 @@ public class entity {
         HPMax = hitpoints;
         name = entName;
         dmgModifier = dmgM;
-    }    
+    }
+    
     public double dealDamage() {
         double result = dmgModifier * gen.nextDouble();
         System.out.println(name + " fired for " + result + " damage!");
@@ -91,9 +92,16 @@ public class entity {
         else isAlive = true;
     }
     
-    public void battle(entity target) {
-        takeDamage(target.dealDamage());
-        target.takeDamage(dealDamage());
+    public boolean battle(entity target) {
+        while (isAlive && target.isAlive) {
+            takeDamage(target.dealDamage());
+        }
+        if (isAlive) {
+            System.out.println("Success! You vanquished " + target.name + "! \n And now for the loot!");
+            loot(target);            
+            return true;
+        }
+        else return false;
     }
     
     public void loot(entity target) {

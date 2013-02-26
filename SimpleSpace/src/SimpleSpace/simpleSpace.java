@@ -108,16 +108,9 @@ public class simpleSpace {
                     case 1:
                         data.jumpCtr++;
                         System.out.println(encounters.get(data.jumpCtr).initSpam);
-                        while (encounters.get(data.jumpCtr).isAlive) {
-                            Thread.sleep(250);
-                            data.plyrs.get(0).battle(encounters.get(data.jumpCtr));
-                        }
-                        if (!encounters.get(data.jumpCtr).isAlive && data.plyrs.get(0).isAlive) {
-                            System.out.println("Success! You vanquished " + encounters.get(data.jumpCtr).name + "! \n And now for the loot!");
-                            data.plyrs.get(0).loot(encounters.get(data.jumpCtr));
-                        } else {
+                        data.plyrs.get(0).battle(encounters.get(data.jumpCtr));
+                        if (!data.plyrs.get(0).battle(encounters.get(data.jumpCtr))) 
                             startGameFailEvent();
-                        }
                         break;
                     case 2:
                         data.inventoryMenu();
