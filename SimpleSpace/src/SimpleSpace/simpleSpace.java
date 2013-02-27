@@ -40,6 +40,16 @@ public class simpleSpace {
                 + "\t-h:\tShow this help message. This can also be triggered with --help.\n");
         System.exit(0);
     }
+    
+    public void printMenu() {
+        System.out.println("|--------------------|");
+        System.out.println("|  Select one:       |");
+        System.out.println("|  1. Jump           |");
+        System.out.println("|  2. Inventory      |");
+        System.out.println("|  3. Load Campaign  |");
+        System.out.println("|  4. Quit           |");
+        System.out.println("|--------------------|");        
+    }
 
     /*
      *  default function for handling switches. takes 2 strings, and parses them as switches.
@@ -92,16 +102,9 @@ public class simpleSpace {
     }
 
     public void startGameEvent() throws InterruptedException, ParserConfigurationException, SAXException, IOException {
-        while (data.plyrs.get(0).isAlive) {
+        while (data.plyrs.get(0).isAlive && data.jumpCtr < data.jumpMax) {
             if (data.plyrs.get(0).isAlive) {
-                System.out.println("|--------------------|");
-                System.out.println("|  Select one:       |");
-                System.out.println("|  1. Jump           |");
-                System.out.println("|  2. Inventory      |");
-                System.out.println("|  3. Load Campaign  |");
-                System.out.println("|  4. Quit           |");
-                System.out.println("|--------------------|");
-
+                printMenu();
                 int menuItem = data.input.nextInt();
 
                 switch (menuItem) {
@@ -118,8 +121,8 @@ public class simpleSpace {
                     case 3:
                         try {
                             data.open();
-                        } catch (        ParserConfigurationException | SAXException | IOException ex) {
-                            Logger.getLogger(simpleSpace.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch ( ParserConfigurationException | SAXException | IOException ex) {
+                            data.logger.append(simpleSpace.class.toString());
                         }
                         break;
                     case 4:
@@ -137,6 +140,9 @@ public class simpleSpace {
                 startGameFailEvent();
             }
         }
+        if (data.jumpCtr == data.jumpMax && data.plyrs.get(0).isAlive) {
+            startGameSuccessEvent();
+        }
     }
 
     public void startGameSuccessEvent() {
@@ -152,20 +158,9 @@ public class simpleSpace {
         System.exit(0);
     }
 
-    public void mnMenu() throws InterruptedException, ParserConfigurationException, SAXException, SAXException, IOException {
-        for (; data.jumpCtr < data.jumpMax; data.jumpCtr++) {
-            startGameEvent();
-        }
-        if (data.plyrs.get(0).isAlive) {
-            startGameSuccessEvent();
-        } else {
-            startGameFailEvent();
-        }
-    }
-
     public static void main(String[] args) throws InterruptedException, Exception {
         simpleSpace game = new simpleSpace();
         game.processor(args);
-        game.mnMenu();
+        game.startGameEvent();
     }
 }
