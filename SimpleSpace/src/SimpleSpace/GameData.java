@@ -64,13 +64,16 @@ public class GameData extends initGameData {
                 + "and each have a repair value of " + data.possibleItems.get(2).repairValue + " HP."
                 + "\nHow many do you want to use?");
         int menuItem = input.nextInt();
+        while (data.plyrs.get(0).HPMax > (data.plyrs.get(0).HP += (data.possibleItems.get(2).repairValue * menuItem))){ 
         if (data.possibleItems.get(2).qty >= menuItem) {
             data.plyrs.get(0).HP += (data.possibleItems.get(2).repairValue * menuItem);
             System.out.println("You have " + data.plyrs.get(0).HP + " HP");
         } else {
             System.out.println("You do not have enough drones!");
         }
-    }
+        }
+        System.out.println("You can't go over " + data.plyrs.get(0).HPMax + " total HP.");
+        }
     
     public boolean battle(entity source, entity target) {
         while (source.isAlive && target.isAlive) {
