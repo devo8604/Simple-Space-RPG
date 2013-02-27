@@ -80,14 +80,11 @@ public class entity {
     
     public double dealDamage() {
         double result = dmgModifier * gen.nextDouble();
-        System.out.println(name + " fired for " + result + " damage!");
         return result;
     }
     
     public void takeDamage(double damage) {
-        System.out.println(name + " took " + damage + " damage!");
         HP -= damage;
-        System.out.println(name + "'s health: " + HP);
         if (HP <= 0) isAlive = false;
         else isAlive = true;
     }
